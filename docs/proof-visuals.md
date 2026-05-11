@@ -2,9 +2,36 @@
 
 The skeletal visual layer should compress the argument without adding proof authority.
 
+## LOGOS README Assets
+
+These overview maps follow the Intelligent Internet presentation grammar:
+cream surfaces, navy structure, restrained accents, and proof-first editorial
+hierarchy.
+
+<p align="center">
+  <img src="assets/logos-spacetime-hero.png" alt="LOGOS hero image for A Brief Derivation of Spacetime" width="900" />
+</p>
+
+<p align="center">
+  <img src="assets/verification-story.png" alt="Verification story for the spacetime derivation" width="900" />
+</p>
+
+<p align="center">
+  <img src="assets/bridge-decomposition-funnel.png" alt="Bridge decomposition funnel for the spacetime derivation" width="900" />
+</p>
+
+The SVG sources and PNG renderer live in `docs/assets/`. Regenerate them with:
+
+```bash
+docs/assets/render_readme_assets.py
+```
+
 ## Current assets
 
 - `docs/public-reader-preview.md`
+- `docs/assets/logos-spacetime-hero.png`
+- `docs/assets/verification-story.png`
+- `docs/assets/bridge-decomposition-funnel.png`
 - `viz/hyperbolic_flow.png`
 - `viz/parabolic_flow.png`
 - `viz/elliptic_flow.png`

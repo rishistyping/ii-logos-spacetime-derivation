@@ -23,6 +23,9 @@ python sympy/spacetime_visualize.py
 ```
 
 For a lightweight rendered narrative using the committed artifacts, read `docs/public-reader-preview.md`.
+For the README-level visual layer, read `docs/proof-visuals.md`; the hero,
+verification story, and bridge funnel assets are generated from
+`docs/assets/render_readme_assets.py`.
 
 Then, when a Wolfram runtime is available:
 

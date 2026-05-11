@@ -1,139 +1,78 @@
 # A Brief Derivation of Spacetime
 
-[![Lean](https://img.shields.io/badge/Lean-v0.5%20bridge%20proved-blue)](https://lean-lang.org/)
-[![SymPy](https://img.shields.io/badge/SymPy-exact%20checks-green)](https://www.sympy.org/)
-[![Wolfram](https://img.shields.io/badge/Wolfram-notebook%20plan-orange)](https://www.wolfram.com/wolfram-engine/)
-[![Paper](https://img.shields.io/badge/paper-PDF-334155)](paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC--BY--4.0-15803d)](LICENSE)
-
-This repository is the public verification and explainer companion to *A Brief Derivation of Spacetime*. The paper asks a simple question with a sharp edge: why does time have a direction that space does not?
-
-The paper's answer is that the arrow was not an extra ingredient added to symmetric laws. It was a sign already present in the algebra. Start with ordinary positive space, let curvature appear as the failure of translations to commute, pass through the finite positive-curvature branch, and the same sign reappears as de Sitter time evolution, the expanding direction, and the positive cosmological constant.
+The sign is structural. The magnitude is empirical. The bridge is tracked claim by claim.
 
 <p align="center">
-  <sub><strong>The sign is structural. The magnitude is empirical. The bridge is tracked claim by claim.</strong></sub>
+  <a href="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/lean.yml"><img src="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/lean.yml/badge.svg" alt="Lean CI" /></a>
+  <a href="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/python-checks.yml"><img src="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/python-checks.yml/badge.svg" alt="Python checks" /></a>
+  <a href="paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf"><img src="https://img.shields.io/badge/paper-PDF-334155" alt="Paper PDF" /></a>
+  <a href="docs/notebooks.md"><img src="https://img.shields.io/badge/notebook-guide-0f766e" alt="Notebook guide" /></a>
+  <a href="docs/claim-status.md"><img src="https://img.shields.io/badge/claims-v0.5%20truth%20surface-15803d" alt="Claim status" /></a>
+  <a href="docs/proof-visuals.md"><img src="https://img.shields.io/badge/visuals-LOGOS%20style-b88a2e" alt="Proof visuals" /></a>
+  <a href="https://ii.inc"><img src="https://img.shields.io/badge/Homepage-II.inc-blue" alt="Intelligent Internet Homepage" /></a>
+  <a href="https://ii.inc/web/blog/post/logos"><img src="https://img.shields.io/badge/Blog-II--LOGOS-blue" alt="II-LOGOS Blog" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC--BY--4.0-15803d" alt="Dual licensed under Apache 2.0 and CC BY 4.0" /></a>
 </p>
 
-## The Idea In Plain English
+<p align="center">
+  <img src="docs/assets/logos-spacetime-hero.png" alt="LOGOS hero image for A Brief Derivation of Spacetime" width="900" />
+</p>
+<p align="center">
+  <sub>LOGOS is the public-facing presentation surface for the spacetime derivation project.</sub>
+</p>
+<p align="center">
+  <sub><strong>Algebra can carry a sign. Physics decides how far that sign reaches.</strong></sub>
+</p>
 
-- `Curvature is failed commuting.` On a flat floor, walking east then north lands where north then east would. On a sphere, those two trips do not quite agree. That failure is curvature.
-- `One sign splits three worlds.` The parameter `λ` sorts the maximally symmetric geometries into positive, zero, and negative branches.
-- `The positive branch is the finite one.` The paper argues that a fully invariant normalized geometry selects the positive-curvature branch before time is introduced.
-- `Time arrives by changing signature.` The sphere's algebra becomes the de Sitter algebra after one coordinate changes sign. The same `λ` now controls spacetime curvature.
-- `Time evolution has two algebraic directions.` On each `(K_i, P_i)` plane, time evolution is the matrix `A(λ)`. For `λ > 0`, it has two real eigendirections, one expanding and one contracting.
-- `The physical arrow remains a bridge claim.` The repository proves the exact algebraic matrix and eigendirection facts. The final reading that those eigendirections are light rays, horizons, and the observed arrow of time is tracked as `Interpretation` until separately formalized.
+This repository is the public verification and explainer companion to *A Brief Derivation of Spacetime*. The paper asks why time has a direction that space does not, and traces the answer through a curvature sign that survives the passage from spatial geometry to de Sitter time evolution.
+
+The repository keeps that story honest. Lean 4 supplies proof authority for the exact algebraic surface now encoded. SymPy and Wolfram provide computed companions and reader-facing artifacts. The physical arrow-of-time thesis remains labeled as interpretation until its bridges are separately formalized.
+
+## Why This Matters
+
+The usual story says that spacetime comes first and dynamics happens inside it. This paper tries a more architectural route: begin with ordinary positive space, let curvature appear as the failure of translations to commute, and ask what happens when the selected positive branch is read as spacetime.
+
+The punchline is not that a measured physical number drops out of pure algebra. It is subtler and cleaner:
+
+- `The algebra carries a sign.` The curvature parameter `λ` sorts the available geometries.
+- `The positive spatial branch is special.` The paper argues that the finite, fully invariant spatial starting point is the positive branch.
+- `The same sign enters spacetime.` After the signature change, four-dimensional symbolic Lambda satisfies `Λ = 3λ`.
+- `Time evolution splits directions.` The local matrix `A(λ)` has algebraic eigendirections on the positive branch.
+- `The final physical reading is guarded.` Light-cone, horizon, redshift, and arrow-of-time language remain above the current theorem surface.
 
 ## The Six-Step Story
 
-The paper begins with the least exotic object in geometry: the dot product. Ordinary space has a positive metric, so every squared distance is a sum of squares and no spatial direction is preferred.
+The paper starts with the least exotic object in geometry: a positive metric. Every squared distance is positive, and no spatial direction is preferred.
 
-Then it asks what happens to translations. In flat space, translations commute. On curved spaces they do not, and the maximally symmetric possibilities are classified by one number:
+Then it asks what happens to translations. In flat space, translations commute. On curved spaces they fail to commute, and the maximally symmetric possibilities are organized by one number:
 
 ```text
 [P_a, P_b] = λ J_ab
 ```
 
-Positive `λ` gives the sphere, zero `λ` gives flat space, and negative `λ` gives hyperbolic space. The paper's finiteness argument then selects the positive branch as the self-contained spatial starting point.
+Positive `λ` gives the spherical branch, zero `λ` gives the flat branch, and negative `λ` gives the hyperbolic branch. The paper's finiteness argument selects the positive spatial branch before time is introduced.
 
-The time step is a signature change. The positive sphere algebra `so(d+1)` is related to the de Sitter algebra `so(d,1)` by changing one coordinate from spatial to temporal. The same sign of `λ` survives the passage from space to spacetime, and in four dimensions the cosmological constant relation reads `Λ = 3λ`.
+The time step is a signature change. The positive sphere algebra is related to the de Sitter algebra after one coordinate is read as temporal. The same `λ` now controls spacetime curvature, and in four dimensions the symbolic relation becomes:
 
-The crucial local computation is a two-by-two matrix. Time evolution acts on each `(K_i, P_i)` plane by
+```text
+Λ = 3λ
+```
+
+The crucial local computation is a two-by-two matrix. Time evolution acts on each `(K_i, P_i)` plane by:
 
 ```text
 A(λ) = [[0, -λ],
         [-1,  0]]
 ```
 
-For positive `λ`, that matrix separates into two algebraic eigendirections:
+For nonnegative `λ`, Lean proves the algebraic eigendirection equations:
 
 ```text
 ℓ+ = (-√λ, 1),  A(λ)ℓ+ =  √λ ℓ+
 ℓ- = ( √λ, 1),  A(λ)ℓ- = -√λ ℓ-
 ```
 
-The paper reads the expanding direction as the future-facing sign of time. The repository keeps that last move honest: algebraic eigendirections are now Lean-proved.
-
-The null/light-cone and horizon interpretation remains outside the proved surface.
-
-## v0.5 Bridge Decomposition
-
-The v0.5 release breaks the paper's final sign thesis into smaller claims so
-the public proof boundary is easier to inspect.
-
-| Bridge packet | Current tag | What changed |
-| --- | --- | --- |
-| Algebraic eigendirections | `Lean-proved` | `ℓ+` and `ℓ-` are eigenvectors of `A(λ)` on the nonnegative branch. |
-| Algebraic split form | `Lean-proved` | `Q(k,p)=k²-λp²` vanishes on `ℓ+` and `ℓ-`, and scales as `Q(rv)=r²Q(v)`. |
-| Four-dimensional Lambda arithmetic | `Lean-proved` | `Λ=3λ`; positive `λ` gives positive symbolic `Λ`. |
-| Geometric and physical reading | `Interpretation` | The paper's later physical interpretation is tracked separately. |
-
-## Explainable Map
-
-For a guided public-facing version of this arc, read
-[`docs/public-reader-preview.md`](docs/public-reader-preview.md).
-
-```mermaid
-flowchart LR
-    S["Positive spatial metric"] --> C["Curvature bracket [P,P] = lambda J"]
-    C --> B["lambda branch split"]
-    B --> P["positive finite branch"]
-    P --> D["de Sitter signature change"]
-    D --> M["time-evolution matrix A(lambda)"]
-    M --> E["Lean-proved eigendirections"]
-    E --> I["physical arrow interpretation"]
-    classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
-    linkStyle default stroke:#5D6572,stroke-width:2px;
-```
-
-```mermaid
-flowchart LR
-    P["Paper source"] --> L["Lean proof authority"]
-    L --> S["SymPy artifacts"]
-    S --> D["Claim-status ledgers"]
-    D --> R["Rerunnable checks"]
-    R --> V["Inspectable v0.5 result"]
-    classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
-    linkStyle default stroke:#5D6572,stroke-width:2px;
-```
-
-## Current Verification Status
-
-This is a **v0.5 bridge-decomposition release** with a public-reader preview. Lean is the intended proof authority for exact algebraic and matrix identities. SymPy and Wolfram are computational and explanatory companions.
-
-Physical interpretations such as the arrow of time and the shared sign of `t`, `c`, and `Λ` remain tagged as `Interpretation` until each bridge is separately formalized.
-
-The exact matrix spine, algebraic branch markers, positive-branch algebraic eigendirections, algebraic split-null bridge, and four-dimensional Lambda sign arithmetic have been promoted after `lake build`.
-
-The current `Lean-proved` matrix spine is:
-
-```text
-A(λ) = [[0, -λ],
-        [-1,  0]]
-
-trace(A)    = 0
-det(A)      = -λ
-charpoly(A) = x² - λ
-A(λ)²       = λ I
-```
-
-The current branch surface is:
-
-| Branch | Lean-proved algebraic fact | Notebook / explainer reading |
-| --- | --- | --- |
-| `λ > 0` | `det(A) < 0` and the hyperbolic algebraic marker holds | SymPy records real split roots; hyperbolic flow |
-| `λ = 0` | `A² = 0` | parabolic / nilpotent limit |
-| `λ < 0` | `det(A) > 0`, `trace(A)=0`, and the elliptic algebraic marker holds | elliptic flow |
-
-The current `Lean-proved` eigendirection bridge is algebraic only:
-
-```text
-ℓ+ = (-√λ, 1),  A(λ)ℓ+ =  √λ ℓ+    for λ ≥ 0
-ℓ- = ( √λ, 1),  A(λ)ℓ- = -√λ ℓ-    for λ ≥ 0
-```
-
-For `λ > 0`, Lean also proves `ℓ+ ≠ ℓ-`. The claim that these eigendirections are null/light-cone directions remains `Interpretation`.
-
-The current `Lean-proved` bridge decomposition adds:
+v0.5 adds the split-form bridge:
 
 ```text
 Q(k,p) = k² - λp²
@@ -141,43 +80,110 @@ Q(k,p) = k² - λp²
 Q(ℓ+) = 0
 Q(ℓ-) = 0
 Q(rv) = r²Q(v)
-
-Λ = 3λ     in four dimensions
-λ > 0  =>  Λ > 0
 ```
 
-## Choose your path
+The paper then reads those algebraic directions as part of the physical arrow story. This repository tracks that final move as interpretation, not as a proved theorem.
 
-- `General reader:` Start with [The Idea In Plain English](#the-idea-in-plain-english), [The Six-Step Story](#the-six-step-story), and the paper PDF in [`paper/`](paper/).
-- `Paper reader:` Compare the paper source in [`paper/`](paper/), the public preview in [`docs/public-reader-preview.md`](docs/public-reader-preview.md), and the status board in [`docs/claim-status.md`](docs/claim-status.md).
+## Explainable Visual Map
+
+The README now follows the broader Intelligent Internet / LOGOS presentation grammar: parchment surfaces, navy structure, restrained accents, and proof-first diagrams. These images are explanatory surfaces; the Lean files remain the proof authority.
+
+<p align="center">
+  <img src="docs/assets/verification-story.png" alt="Verification story for the spacetime derivation" width="900" />
+</p>
+<p align="center">
+  <sub>Paper source, Lean proof authority, computed companions, visual explanation, and release checks move as one verification story.</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/bridge-decomposition-funnel.png" alt="Bridge decomposition funnel for the spacetime derivation" width="900" />
+</p>
+<p align="center">
+  <sub>The bridge funnel separates Lean-proved algebra from the later physical interpretation boundary.</sub>
+</p>
+
+```mermaid
+flowchart LR
+    S["Positive spatial metric"] --> C["Curvature bracket"]
+    C --> B["lambda branch split"]
+    B --> P["positive finite branch"]
+    P --> D["de Sitter signature change"]
+    D --> M["time-evolution matrix"]
+    M --> E["Lean-proved eigendirections"]
+    E --> Q["Lean-proved split form"]
+    Q --> I["physical interpretation boundary"]
+    classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
+    linkStyle default stroke:#5D6572,stroke-width:2px;
+```
+
+For the deeper public proof map, use [`docs/proof-visuals.md`](docs/proof-visuals.md). For the reader-first explainer, use [`docs/public-reader-preview.md`](docs/public-reader-preview.md).
+
+## What Is Proved Now
+
+This is a v0.5 bridge-decomposition release. The promoted Lean surface is intentionally narrow:
+
+| Packet | Status | What it covers |
+| --- | --- | --- |
+| Matrix spine | `Lean-proved` | `A(λ)`, trace, determinant, characteristic polynomial, and `A(λ)²=λI` |
+| Branch markers | `Lean-proved` | positive, zero, and negative algebraic branch behavior |
+| Eigendirections | `Lean-proved` | `ℓ+`, `ℓ-`, eigenvalues, nonzero witnesses, and distinctness for `λ>0` |
+| Split form | `Lean-proved` | `Q(ℓ+)=0`, `Q(ℓ-)=0`, and quadratic scaling |
+| Four-dimensional Lambda arithmetic | `Lean-proved` | `Λ=3λ` and positive `λ` gives positive symbolic `Λ` |
+
+The physical interpretation remains separate:
+
+| Packet | Status |
+| --- | --- |
+| Sphere compactness / finiteness bridge | `Imported theorem` |
+| Wick-rotation / Lorentzian signature reading | `Interpretation` |
+| Eigenspaces as geometric light-cone directions | `Interpretation` |
+| Horizon, redshift, and arrow-of-time reading | `Interpretation` |
+| Shared sign thesis for `t`, `c`, and `Λ` | `Interpretation` |
+
+See [`docs/claim-status.md`](docs/claim-status.md) for the canonical claim board.
+
+## Choose Your Path
+
+- `General reader:` Start with [Why This Matters](#why-this-matters), [The Six-Step Story](#the-six-step-story), and [`docs/public-reader-preview.md`](docs/public-reader-preview.md).
+- `Paper reader:` Compare the PDF and TeX in [`paper/`](paper/) with [`docs/paper-lean-notebook-crosswalk.md`](docs/paper-lean-notebook-crosswalk.md).
 - `Formal verifier:` Start with [`Spacetime.lean`](Spacetime.lean), [`Spacetime/`](Spacetime/), and [`docs/theorem-ledger.md`](docs/theorem-ledger.md).
-- `Notebook explorer:` Use [`sympy/`](sympy/), [`results/`](results/), [`viz/`](viz/), and the committed-artifact walkthrough in [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb).
-- `Maintainer or publisher:` Use [`docs/`](docs/), [`spec/`](spec/), and [Release discipline](#release-discipline) before promoting any new claim.
+- `Notebook explorer:` Use [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb), [`sympy/`](sympy/), [`results/`](results/), and [`viz/`](viz/).
+- `Maintainer or publisher:` Use [`docs/repo-operating-system.md`](docs/repo-operating-system.md), [`ops/long-horizon/`](ops/long-horizon/), and [Release Discipline](#release-discipline).
 
-## Authority model
+## Formal Verification
 
-The repository uses the same four evidence tags as the One Postulate and Cosmological Constant companion repositories:
+The repository formalizes the current exact algebraic spine in Lean 4. The development is deliberately lightweight and matrix-first: define the minimal objects, prove exact identities, and keep physical bridge claims out of proof status until they have their own theorem surface.
 
-- `Lean-proved`: only after a successful `lake build` with no proof holes.
-- `Computed here`: exact symbolic/computational artifacts generated inside this repository.
-- `Imported theorem`: standard outside mathematical/geometric facts accepted as external inputs.
-- `Interpretation`: paper-level physical or philosophical readings above the theorem surface.
+| Surface | Role | Authority |
+| --- | --- | --- |
+| [`paper/`](paper/) | Paper source, PDF, and physical narrative | Paper |
+| [`Spacetime.lean`](Spacetime.lean) and [`Spacetime/`](Spacetime/) | Guarded Lean theorem surface | Lean proof authority |
+| [`sympy/`](sympy/) and [`results/`](results/) | Exact computational checks and committed artifacts | `Computed here` |
+| [`docs/`](docs/) and [`spec/`](spec/) | Truth surfaces, ledgers, and crosswalks | Repository governance |
+| [`docs/assets/`](docs/assets/) and [`viz/`](viz/) | Visual presentation companions | Explanatory only |
 
-See [`docs/status-definitions.md`](docs/status-definitions.md) and [`docs/claim-status.md`](docs/claim-status.md).
+The main Lean modules line up with the current theorem surface:
 
-## Reproduce the current checks
+| Lean surface | What it covers |
+| --- | --- |
+| [`Spacetime/TimeEvolutionMatrix.lean`](Spacetime/TimeEvolutionMatrix.lean) | exact `A(λ)` matrix spine |
+| [`Spacetime/SignVerdict.lean`](Spacetime/SignVerdict.lean) | algebraic branch markers |
+| [`Spacetime/EigenDirections.lean`](Spacetime/EigenDirections.lean) | minimal `Vec2`, matrix-vector action, eigendirections |
+| [`Spacetime/NullBridge.lean`](Spacetime/NullBridge.lean) | split quadratic form and algebraic split-nullness |
+| [`Spacetime/SignatureBridge.lean`](Spacetime/SignatureBridge.lean) | four-dimensional Lambda arithmetic |
+
+## Explore It for Yourself
+
+Run the full local validation gate:
 
 ```bash
 uv sync
 bash scripts/check_all.sh
 ```
 
-The combined helper runs the SymPy exact/eigendirection/bridge checks,
-regenerates the JSON and visual artifacts, checks artifact drift, validates the
-truth surfaces, scans Lean files for proof holes, and runs `lake build`.
+The helper runs the SymPy exact/eigendirection/bridge checks, regenerates JSON and visual artifacts, checks artifact drift, validates truth surfaces, scans Lean files for proof holes, and runs `lake build`.
 
-If you are not using `uv`, install the core Python dependencies from
-`requirements.txt` and run the same helper.
+If you are not using `uv`, install the core Python dependencies from `requirements.txt` and run the same helper. Lean/Lake is required for the full v0.5 validation gate.
 
 The notebook dependency surface is optional:
 
@@ -185,9 +191,13 @@ The notebook dependency surface is optional:
 uv sync --extra notebooks
 ```
 
-Lean/Lake is required for the full v0.5 validation gate.
+The README visuals can be regenerated on macOS with:
 
-## Build map
+```bash
+docs/assets/render_readme_assets.py
+```
+
+## Build And Repository Map
 
 ```text
 paper/                    Paper source and PDF
@@ -197,18 +207,19 @@ SpacetimeFull.lean        Full-paper interpretation root
 sympy/                    Exact symbolic scripts and regression checks
 results/                  JSON result artifacts and manifest
 viz/                      Generated branch-flow figures
+docs/assets/              README visual assets and renderer
 wolfram/                  Notebook plan and builder stub
-notebooks/                Python/SymPy notebook stub
+notebooks/                Python/SymPy notebook walkthrough
 docs/                     Claim ledger, theorem ledger, crosswalks, guides
 spec/                     Machine-readable claim/equation/symbol specs
 scripts/                  Local reproducibility helpers
-.github/workflows/        CI skeletons
+.github/workflows/        CI gates
 ops/long-horizon/         Long-running build control plane
 ```
 
-## Release discipline
+## Release Discipline
 
-Before any additional exact claim is promoted to `Lean-proved`, update these surfaces together:
+Before any additional exact claim is promoted, update these surfaces together:
 
 ```text
 docs/claim-status.md
@@ -220,4 +231,4 @@ docs/build-status.md
 README.md
 ```
 
-The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.5.
+The final physical sentence that `t > 0`, `c > 0`, and `Λ > 0` share the same sign remains `Interpretation` in v0.5.
