@@ -1,0 +1,84 @@
+{
+  "truth_tag": "Computed here",
+  "authority_note": "Computed matrix-flow companion. Physical horizon/redshift readings are not promoted here.",
+  "positive_branch": {
+    "lambda": "s**2",
+    "flow_formula": "exp(tA) = cosh(s*t)I + sinh(s*t)/s A",
+    "differential_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "initial_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "ell_plus_scaling_residual": [
+      "0",
+      "0"
+    ],
+    "ell_minus_scaling_residual": [
+      "0",
+      "0"
+    ]
+  },
+  "zero_branch": {
+    "lambda": "0",
+    "flow_formula": "exp(tA) = I + tA",
+    "differential_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "initial_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "negative_branch": {
+    "lambda": "-omega**2",
+    "flow_formula": "exp(tA) = cos(omega*t)I + sin(omega*t)/omega A",
+    "differential_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "initial_residual": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ]
+  }
+}

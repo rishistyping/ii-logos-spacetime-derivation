@@ -26,4 +26,10 @@ theorem cosmologicalFromCurvature_four (lam : CurvatureSign) :
   norm_num [cosmologicalFromCurvature]
   ring
 
+/-- In four spacetime dimensions, positive curvature gives positive symbolic Lambda. -/
+theorem cosmologicalFromCurvature_four_positive {lam : CurvatureSign} (h : 0 < lam) :
+    0 < cosmologicalFromCurvature 4 lam := by
+  rw [cosmologicalFromCurvature_four]
+  nlinarith
+
 end Spacetime

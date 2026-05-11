@@ -1,0 +1,53 @@
+{
+  "truth_tag": "Computed here",
+  "authority_note": "Computed invariant-form companion for Q(k,p)=k**2-lambda*p**2.",
+  "matrix_A": [
+    [
+      "0",
+      "-lambda"
+    ],
+    [
+      "-1",
+      "0"
+    ]
+  ],
+  "symmetric_form_variables": {
+    "G": [
+      [
+        "a",
+        "b"
+      ],
+      [
+        "b",
+        "c"
+      ]
+    ]
+  },
+  "invariance_equation": "A.T*G + G*A = 0",
+  "solution_family": [
+    {
+      "b": "0",
+      "c": "-a*lambda"
+    }
+  ],
+  "canonical_form": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "-lambda"
+    ]
+  ],
+  "canonical_residual": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0"
+    ]
+  ]
+}

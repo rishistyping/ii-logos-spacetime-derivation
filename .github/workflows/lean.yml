@@ -4,17 +4,19 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
-      - name: Build Lean scaffold
-        run: lake build
-      - name: Check for proof holes
-        run: |
-          if grep -RInE '\bsorry\b|\badmit\b' Spacetime.lean SpacetimeFull.lean Spacetime; then
-            echo "Found proof holes."
-            exit 1
-          fi
+      - name: Run Lean checks
+        run: bash scripts/check_lean.sh

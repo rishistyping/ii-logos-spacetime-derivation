@@ -16,6 +16,7 @@ docs/build-status.md
 spec/claims.yaml
 spec/equations.yaml
 results/manifest.json
+ops/long-horizon/*.md
 ```
 
 ## Evidence lanes
@@ -37,12 +38,22 @@ Before any claim is promoted to `Lean-proved`:
 - [ ] `spec/claims.yaml` is updated.
 - [ ] `docs/build-status.md` records the validation.
 
-## Current live frontier
+## Operational control plane
+
+`PLANS.md` remains the public roadmap. The larger incremental build plan is
+tracked under `ops/long-horizon/`:
+
+- `prompt.md`: mission, non-goals, and authority order.
+- `plans.md`: execution waves.
+- `implement.md`: implementation state and merge discipline.
+- `documentation.md`: truth-surface sync requirements.
+
+## Current v0.5 live frontier
 
 The current frontier is not a broad physical proof. It is the narrow matrix spine:
 
 ```text
-A(λ), trace, determinant, characteristic polynomial, square, and sign-regime classification.
+A(λ), trace, determinant, characteristic polynomial, square, sign-regime classification, algebraic eigendirections, algebraic split-nullness, and four-dimensional Lambda sign arithmetic.
 ```
 
 The final physical arrow-of-time sign thesis remains interpretation until bridge theorems are separately encoded.

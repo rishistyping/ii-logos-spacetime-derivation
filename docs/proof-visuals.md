@@ -17,6 +17,10 @@ A(λ) = [[0, -λ], [-1, 0]].
 
 The public reader preview combines those images with Mermaid diagrams and visible truth tags. It does not add proof authority.
 
+The v0.5 computed artifact layer also includes split-null, Lambda-sign,
+branch-flow, and invariant-form JSON summaries in `results/`. Those files are
+audit trails for the visual narrative, not physical proof objects.
+
 ## Target v1 assets
 
 - `wolfram/assets/notebook_hero_overview.svg`

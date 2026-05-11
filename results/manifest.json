@@ -1,21 +1,101 @@
 {
-  "schema": "ii-logos-spacetime-derivation-results-manifest-v1",
+  "schema": "ii-logos-spacetime-derivation-results-manifest-v2",
   "generated_by": [
     "sympy/spacetime_exact_checks.py",
     "sympy/spacetime_matrix_oracle.py",
     "sympy/spacetime_eigendirections.py",
+    "sympy/spacetime_null_bridge.py",
+    "sympy/spacetime_lambda_sign.py",
+    "sympy/spacetime_flow_scaling.py",
+    "sympy/spacetime_invariant_form.py",
     "sympy/spacetime_regression_check.py",
     "sympy/spacetime_visualize.py"
   ],
   "artifacts": [
-    "results/time_evolution_summary.json",
-    "results/matrix_oracle_summary.json",
-    "results/branch_summary.json",
-    "results/eigendirection_summary.json",
-    "results/regression_summary.json",
-    "viz/hyperbolic_flow.png",
-    "viz/parabolic_flow.png",
-    "viz/elliptic_flow.png"
+    {
+      "path": "results/time_evolution_summary.json",
+      "producer": "sympy/spacetime_exact_checks.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 5",
+      "authority_note": "Exact computational companion for the time-evolution matrix."
+    },
+    {
+      "path": "results/matrix_oracle_summary.json",
+      "producer": "sympy/spacetime_matrix_oracle.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 5",
+      "authority_note": "Matrix identity oracle for trace, determinant, characteristic polynomial, and square."
+    },
+    {
+      "path": "results/branch_summary.json",
+      "producer": "sympy/spacetime_matrix_oracle.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 5",
+      "authority_note": "Branch-classification computational companion."
+    },
+    {
+      "path": "results/eigendirection_summary.json",
+      "producer": "sympy/spacetime_eigendirections.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Computed companion for algebraic eigendirections."
+    },
+    {
+      "path": "results/null_bridge_summary.json",
+      "producer": "sympy/spacetime_null_bridge.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Computed companion for algebraic split-nullness; not a physical light-ray proof."
+    },
+    {
+      "path": "results/lambda_sign_summary.json",
+      "producer": "sympy/spacetime_lambda_sign.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 4",
+      "authority_note": "Computed companion for four-dimensional Lambda arithmetic."
+    },
+    {
+      "path": "results/time_flow_summary.json",
+      "producer": "sympy/spacetime_flow_scaling.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Computed branch-flow companion; physical horizon and redshift readings remain interpretive."
+    },
+    {
+      "path": "results/invariant_metric_summary.json",
+      "producer": "sympy/spacetime_invariant_form.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Computed invariant-form companion for the split quadratic form."
+    },
+    {
+      "path": "results/regression_summary.json",
+      "producer": "sympy/spacetime_regression_check.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Steps 5-6",
+      "authority_note": "Regression summary over the committed computational surfaces."
+    },
+    {
+      "path": "viz/hyperbolic_flow.png",
+      "producer": "sympy/spacetime_visualize.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Visual explanatory companion for the positive branch."
+    },
+    {
+      "path": "viz/parabolic_flow.png",
+      "producer": "sympy/spacetime_visualize.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Visual explanatory companion for the zero branch."
+    },
+    {
+      "path": "viz/elliptic_flow.png",
+      "producer": "sympy/spacetime_visualize.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Visual explanatory companion for the negative branch."
+    }
   ],
-  "authority_note": "These artifacts are Computed here companions. They do not promote claims to Lean-proved."
+  "authority_note": "Artifacts are Computed here companions. Lean proof status is controlled by the theorem ledger and lake build."
 }

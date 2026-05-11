@@ -70,6 +70,31 @@ claims:
     computational_artifact: "results/eigendirection_summary.json"
     notes: "Promoted in v0.3 as an algebraic eigendirection bridge only; null-vector and light-cone readings remain interpretation."
 
+  - id: ST-07-SPLIT-NULL
+    statement: "For lambda >= 0, ellPlus and ellMinus vanish against the split quadratic form Q(k,p)=k^2-lambda*p^2, and Q scales quadratically."
+    status: Lean-proved
+    lean_target: "Spacetime/NullBridge.lean"
+    lean_declarations:
+      - splitQuadratic
+      - IsSplitNull
+      - splitQuadratic_scale
+      - ellPlus_splitQuadratic_zero
+      - ellMinus_splitQuadratic_zero
+      - ellPlus_isSplitNull
+      - ellMinus_isSplitNull
+    computational_artifact: "results/null_bridge_summary.json"
+    notes: "Promoted in v0.5 as an algebraic split-form bridge only; physical readings remain interpretation."
+
+  - id: ST-08-LAMBDA-SIGN
+    statement: "In four spacetime dimensions, cosmologicalFromCurvature 4 lambda = 3*lambda, and lambda > 0 implies cosmologicalFromCurvature 4 lambda > 0."
+    status: Lean-proved
+    lean_target: "Spacetime/SignatureBridge.lean"
+    lean_declarations:
+      - cosmologicalFromCurvature_four
+      - cosmologicalFromCurvature_four_positive
+    computational_artifact: "results/lambda_sign_summary.json"
+    notes: "Promoted in v0.5 as an arithmetic bridge only; observational or physical cosmological readings remain outside this claim."
+
   - id: PHYS-01
     statement: "t > 0, c > 0, and Lambda > 0 share the same sign"
     status: Interpretation

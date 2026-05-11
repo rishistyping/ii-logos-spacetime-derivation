@@ -1,0 +1,27 @@
+{
+  "truth_tag": "Computed here",
+  "authority_note": "Computed companion for the Lean split-null algebraic bridge; not a physical light-ray proof.",
+  "parameterization": {
+    "lambda": "s**2",
+    "assumption": "s > 0"
+  },
+  "split_quadratic": "Q(k,p) = k**2 - lambda*p**2",
+  "ell_plus": {
+    "coordinates_K_P": [
+      "-s",
+      "1"
+    ],
+    "Q_value": "0"
+  },
+  "ell_minus": {
+    "coordinates_K_P": [
+      "s",
+      "1"
+    ],
+    "Q_value": "0"
+  },
+  "homogeneity": {
+    "identity": "Q(a*v) = a**2*Q(v)",
+    "residual": "0"
+  }
+}

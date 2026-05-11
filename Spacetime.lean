@@ -4,6 +4,7 @@ import Spacetime.SignatureBridge
 import Spacetime.TimeEvolutionMatrix
 import Spacetime.SignVerdict
 import Spacetime.EigenDirections
+import Spacetime.NullBridge
 
 /-!
 # Spacetime

@@ -95,6 +95,19 @@ this repository yet.
 
 `Truth tag: Interpretation`
 
+## v0.5 Bridge Decomposition
+
+The new v0.5 layer separates two algebraic bridge facts from the later
+physical story.
+
+| Claim | Truth tag | Repository surface |
+| --- | --- | --- |
+| `Q(k,p)=k²-λp²` scales as `Q(rv)=r²Q(v)` | `Lean-proved` | `Spacetime/NullBridge.lean`, `results/null_bridge_summary.json` |
+| `Q(ℓ+)=0` and `Q(ℓ-)=0` for `λ≥0` | `Lean-proved` | `Spacetime/NullBridge.lean`, `results/null_bridge_summary.json` |
+| `Λ=3λ` in four dimensions, and positive `λ` gives positive symbolic `Λ` | `Lean-proved` | `Spacetime/SignatureBridge.lean`, `results/lambda_sign_summary.json` |
+| Matrix-flow and invariant-form summaries | `Computed here` | `results/time_flow_summary.json`, `results/invariant_metric_summary.json` |
+| Later physical reading | `Interpretation` | paper conclusion and future bridge packets |
+
 ## Visual Map
 
 ```mermaid
@@ -105,7 +118,8 @@ flowchart LR
     D --> E["de Sitter signature change"]
     E --> F["time-evolution matrix"]
     F --> G["Lean-proved eigendirections"]
-    G --> H["arrow-of-time interpretation"]
+    G --> H["Lean-proved split form"]
+    H --> I["arrow-of-time interpretation"]
     classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
     linkStyle default stroke:#5D6572,stroke-width:2px;
 ```
@@ -118,7 +132,7 @@ flowchart LR
     S --> I["Interpretive bridge"]
     L --> R["Rerunnable checks"]
     C --> R
-    I --> V["Future v0.5 bridge work"]
+    I --> V["Future v0.6 bridge work"]
     classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
     linkStyle default stroke:#5D6572,stroke-width:2px;
 ```
@@ -126,9 +140,11 @@ flowchart LR
 ## Boundary To Remember
 
 The public preview is allowed to explain the paper's story, but it must not
-change the proof status of any claim. As of v0.4, the repository has promoted
-the exact matrix spine, branch markers, and algebraic eigendirections. It has
-not promoted the null/light-cone bridge, redshift, horizon interpretation,
-arrow of time, or shared-sign thesis.
+change the proof status of any claim. As of v0.5, the repository has promoted
+the exact matrix spine, branch markers, algebraic eigendirections, algebraic
+split-nullness, and four-dimensional Lambda sign arithmetic.
+
+It has not promoted the geometric null/light-cone bridge, redshift, horizon
+interpretation, arrow of time, or shared-sign thesis.
 
 For the canonical ledger, see `docs/claim-status.md`.

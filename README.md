@@ -1,6 +1,6 @@
 # A Brief Derivation of Spacetime
 
-[![Lean](https://img.shields.io/badge/Lean-v0.3%20proved-blue)](https://lean-lang.org/)
+[![Lean](https://img.shields.io/badge/Lean-v0.5%20bridge%20proved-blue)](https://lean-lang.org/)
 [![SymPy](https://img.shields.io/badge/SymPy-exact%20checks-green)](https://www.sympy.org/)
 [![Wolfram](https://img.shields.io/badge/Wolfram-notebook%20plan-orange)](https://www.wolfram.com/wolfram-engine/)
 [![Paper](https://img.shields.io/badge/paper-PDF-334155)](paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf)
@@ -55,6 +55,18 @@ The paper reads the expanding direction as the future-facing sign of time. The r
 
 The null/light-cone and horizon interpretation remains outside the proved surface.
 
+## v0.5 Bridge Decomposition
+
+The v0.5 release breaks the paper's final sign thesis into smaller claims so
+the public proof boundary is easier to inspect.
+
+| Bridge packet | Current tag | What changed |
+| --- | --- | --- |
+| Algebraic eigendirections | `Lean-proved` | `ℓ+` and `ℓ-` are eigenvectors of `A(λ)` on the nonnegative branch. |
+| Algebraic split form | `Lean-proved` | `Q(k,p)=k²-λp²` vanishes on `ℓ+` and `ℓ-`, and scales as `Q(rv)=r²Q(v)`. |
+| Four-dimensional Lambda arithmetic | `Lean-proved` | `Λ=3λ`; positive `λ` gives positive symbolic `Λ`. |
+| Geometric and physical reading | `Interpretation` | The paper's later physical interpretation is tracked separately. |
+
 ## Explainable Map
 
 For a guided public-facing version of this arc, read
@@ -79,16 +91,18 @@ flowchart LR
     L --> S["SymPy artifacts"]
     S --> D["Claim-status ledgers"]
     D --> R["Rerunnable checks"]
-    R --> V["Inspectable v0.3 result"]
+    R --> V["Inspectable v0.5 result"]
     classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
     linkStyle default stroke:#5D6572,stroke-width:2px;
 ```
 
 ## Current Verification Status
 
-This is a **v0.4 public-reader preview** over a v0.3 verification skeleton. Lean is the intended proof authority for exact algebraic and matrix identities. SymPy and Wolfram are computational and explanatory companions. Physical interpretations such as the arrow of time and the shared sign of `t`, `c`, and `Λ` remain tagged as `Interpretation` until each bridge is separately formalized.
+This is a **v0.5 bridge-decomposition release** with a public-reader preview. Lean is the intended proof authority for exact algebraic and matrix identities. SymPy and Wolfram are computational and explanatory companions.
 
-The exact matrix spine, algebraic branch markers, and positive-branch algebraic eigendirections have been promoted to `Lean-proved` after `lake build`.
+Physical interpretations such as the arrow of time and the shared sign of `t`, `c`, and `Λ` remain tagged as `Interpretation` until each bridge is separately formalized.
+
+The exact matrix spine, algebraic branch markers, positive-branch algebraic eigendirections, algebraic split-null bridge, and four-dimensional Lambda sign arithmetic have been promoted after `lake build`.
 
 The current `Lean-proved` matrix spine is:
 
@@ -119,12 +133,25 @@ The current `Lean-proved` eigendirection bridge is algebraic only:
 
 For `λ > 0`, Lean also proves `ℓ+ ≠ ℓ-`. The claim that these eigendirections are null/light-cone directions remains `Interpretation`.
 
+The current `Lean-proved` bridge decomposition adds:
+
+```text
+Q(k,p) = k² - λp²
+
+Q(ℓ+) = 0
+Q(ℓ-) = 0
+Q(rv) = r²Q(v)
+
+Λ = 3λ     in four dimensions
+λ > 0  =>  Λ > 0
+```
+
 ## Choose your path
 
 - `General reader:` Start with [The Idea In Plain English](#the-idea-in-plain-english), [The Six-Step Story](#the-six-step-story), and the paper PDF in [`paper/`](paper/).
 - `Paper reader:` Compare the paper source in [`paper/`](paper/), the public preview in [`docs/public-reader-preview.md`](docs/public-reader-preview.md), and the status board in [`docs/claim-status.md`](docs/claim-status.md).
 - `Formal verifier:` Start with [`Spacetime.lean`](Spacetime.lean), [`Spacetime/`](Spacetime/), and [`docs/theorem-ledger.md`](docs/theorem-ledger.md).
-- `Notebook explorer:` Use [`sympy/`](sympy/), [`results/`](results/), [`viz/`](viz/), and the Colab-style notebook stub in [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb).
+- `Notebook explorer:` Use [`sympy/`](sympy/), [`results/`](results/), [`viz/`](viz/), and the committed-artifact walkthrough in [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb).
 - `Maintainer or publisher:` Use [`docs/`](docs/), [`spec/`](spec/), and [Release discipline](#release-discipline) before promoting any new claim.
 
 ## Authority model
@@ -145,9 +172,9 @@ uv sync
 bash scripts/check_all.sh
 ```
 
-The combined helper runs the SymPy exact/eigendirection checks, regenerates the
-JSON and visual artifacts, scans Lean files for proof holes, and runs
-`lake build` when Lean/Lake is installed.
+The combined helper runs the SymPy exact/eigendirection/bridge checks,
+regenerates the JSON and visual artifacts, checks artifact drift, validates the
+truth surfaces, scans Lean files for proof holes, and runs `lake build`.
 
 If you are not using `uv`, install the core Python dependencies from
 `requirements.txt` and run the same helper.
@@ -158,8 +185,7 @@ The notebook dependency surface is optional:
 uv sync --extra notebooks
 ```
 
-If Lean is unavailable, the helper records that the Lean gate was skipped rather
-than supporting additional theorem promotion.
+Lean/Lake is required for the full v0.5 validation gate.
 
 ## Build map
 
@@ -177,6 +203,7 @@ docs/                     Claim ledger, theorem ledger, crosswalks, guides
 spec/                     Machine-readable claim/equation/symbol specs
 scripts/                  Local reproducibility helpers
 .github/workflows/        CI skeletons
+ops/long-horizon/         Long-running build control plane
 ```
 
 ## Release discipline
@@ -193,4 +220,4 @@ docs/build-status.md
 README.md
 ```
 
-The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.4.
+The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.5.

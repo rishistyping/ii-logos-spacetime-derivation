@@ -38,13 +38,27 @@ Status: complete.
 
 ## v0.5 — Physical bridge decomposition
 
+Status: complete.
+
+The paper's final sign thesis is now decomposed into smaller public bridge
+claims. Two narrow algebra/arithmetic bridges are promoted; the physical thesis
+itself remains interpretive.
+
+1. algebraic split directions: `Lean-proved` as split-quadratic facts;
+2. null-vector / light-cone bridge: still `Interpretation`;
+3. curvature-to-`Λ` bridge: four-dimensional `Λ = 3λ` and positive-sign arithmetic are `Lean-proved`;
+4. arrow-of-time orientation bridge: still `Interpretation`.
+
+Operational control for this build lives in `ops/long-horizon/`.
+
+## v0.6 — Geometric bridge packets
+
 Status: next.
 
-Break the paper's final sign thesis into separate bridge claims before any promotion attempt:
+The next conservative target is to decide whether any geometric bridge can be
+encoded without promoting the final physical thesis:
 
-1. algebraic split directions;
-2. null-vector / light-cone bridge;
-3. curvature-to-`Λ` bridge;
-4. arrow-of-time orientation bridge.
-
-Only then consider whether any part of `PHYS-01` can move out of `Interpretation`.
+- split form to geometric null cone;
+- de Sitter horizon interpretation;
+- redshift/orientation bridge;
+- precise statement of what remains imported versus interpreted.

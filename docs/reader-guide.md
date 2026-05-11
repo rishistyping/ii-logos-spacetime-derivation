@@ -13,13 +13,13 @@ This repository is a compact companion to *A Brief Derivation of Spacetime*.
 
 ## What is formalized now
 
-The v0.4 repository has a public-reader preview and a v0.3 Lean-proved algebraic surface around
+The v0.5 repository has a public-reader preview and a Lean-proved algebraic surface around
 
 ```text
 A(λ) = [[0, -λ], [-1, 0]].
 ```
 
-Lean proves the matrix spine, branch markers, and algebraic eigendirections. The computational artifacts verify trace, determinant, characteristic polynomial, square, branch behavior, and eigendirection residuals.
+Lean proves the matrix spine, branch markers, algebraic eigendirections, algebraic split-nullness, and four-dimensional Lambda sign arithmetic. The computational artifacts verify trace, determinant, characteristic polynomial, square, branch behavior, eigendirection residuals, split-null residuals, branch-flow formulas, and invariant form.
 
 ## What is not formalized now
 

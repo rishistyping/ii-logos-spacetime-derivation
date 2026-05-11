@@ -1,0 +1,8 @@
+{
+  "truth_tag": "Computed here",
+  "authority_note": "Computed companion for the Lean four-dimensional arithmetic bridge.",
+  "general_relation": "Lambda(d,lambda) = ((d - 1)*(d - 2)/2)*lambda",
+  "d4_relation": "3*lambda",
+  "d4_residual_against_3_lambda": "0",
+  "positive_sign_reason": "For lambda > 0, 3*lambda > 0."
+}

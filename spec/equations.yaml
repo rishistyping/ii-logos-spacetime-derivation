@@ -41,7 +41,37 @@ equations:
     lean_declaration: ellMinus_eigen
     artifact: "results/eigendirection_summary.json"
 
-  - id: EQ-LAMBDA
-    expression: "Lambda = ((d - 1)(d - 2)/2) lambda; in d=4, Lambda = 3 lambda"
+  - id: EQ-SPLIT-QUADRATIC-SCALE
+    expression: "Q(lambda, r*v) = r^2 Q(lambda, v), where Q(k,p)=k^2-lambda*p^2"
+    status: Lean-proved
+    lean_declaration: splitQuadratic_scale
+    artifact: "results/null_bridge_summary.json"
+
+  - id: EQ-SPLIT-NULL-PLUS
+    expression: "Q(lambda, ellPlus(lambda)) = 0, for lambda >= 0"
+    status: Lean-proved
+    lean_declaration: ellPlus_splitQuadratic_zero
+    artifact: "results/null_bridge_summary.json"
+
+  - id: EQ-SPLIT-NULL-MINUS
+    expression: "Q(lambda, ellMinus(lambda)) = 0, for lambda >= 0"
+    status: Lean-proved
+    lean_declaration: ellMinus_splitQuadratic_zero
+    artifact: "results/null_bridge_summary.json"
+
+  - id: EQ-LAMBDA-GENERAL
+    expression: "Lambda(d,lambda) = ((d - 1)(d - 2)/2) lambda"
     status: Computed here
-    artifact: "results/time_evolution_summary.json"
+    artifact: "results/lambda_sign_summary.json"
+
+  - id: EQ-LAMBDA-D4
+    expression: "cosmologicalFromCurvature 4 lambda = 3*lambda"
+    status: Lean-proved
+    lean_declaration: cosmologicalFromCurvature_four
+    artifact: "results/lambda_sign_summary.json"
+
+  - id: EQ-LAMBDA-D4-POSITIVE
+    expression: "lambda > 0 implies cosmologicalFromCurvature 4 lambda > 0"
+    status: Lean-proved
+    lean_declaration: cosmologicalFromCurvature_four_positive
+    artifact: "results/lambda_sign_summary.json"

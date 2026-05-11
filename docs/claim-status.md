@@ -9,12 +9,14 @@ This board is the canonical human-readable summary of what is proved, computed, 
 - `Imported theorem`
 - `Interpretation`
 
-## Current v0.3 Status
+## Current v0.5 Status
 
 - The repository is a conservative verification/explainer companion.
 - The exact `A(λ)` matrix spine is `Lean-proved`.
 - The algebraic sign-branch markers that build in Lean are `Lean-proved`.
 - The positive-branch algebraic eigendirections are `Lean-proved`.
+- The split-quadratic bridge for those eigendirections is `Lean-proved`.
+- The four-dimensional `Λ = 3λ` and positive-sign arithmetic bridge is `Lean-proved`.
 - SymPy remains the exact computational companion and artifact generator.
 - The final physical sign thesis remains `Interpretation`.
 
@@ -30,9 +32,11 @@ This board is the canonical human-readable summary of what is proved, computed, 
 | `λ=0` branch has square-zero/parabolic algebraic matrix behavior | Lean-proved | `Spacetime/TimeEvolutionMatrix.lean::zero_branch_square_zero`, `Spacetime/SignVerdict.lean::zeroBranch_parabolicAlgebraic`; `results/branch_summary.json` |
 | `λ<0` branch has positive determinant, zero trace, and satisfies the elliptic algebraic marker | Lean-proved | `Spacetime/TimeEvolutionMatrix.lean::negative_branch_det_positive`, `trace_zero`, `Spacetime/SignVerdict.lean::negativeBranch_ellipticAlgebraic`; `results/branch_summary.json` |
 | For `λ≥0`, `ℓ+ = (-√λ,1)` and `ℓ- = (√λ,1)` are nonzero eigenvectors with eigenvalues `√λ` and `-√λ`; for `λ>0` they are distinct | Lean-proved | `Spacetime/EigenDirections.lean::ellPlus_eigen`, `ellMinus_eigen`, `ellPlus_nonzero`, `ellMinus_nonzero`, `ellPlus_ne_ellMinus`; `sympy/spacetime_eigendirections.py`, `results/eigendirection_summary.json` |
+| For `λ≥0`, `ℓ+` and `ℓ-` vanish against `Q(k,p)=k²-λp²`, and `Q(rv)=r²Q(v)` | Lean-proved | `Spacetime/NullBridge.lean::splitQuadratic`, `splitQuadratic_scale`, `ellPlus_splitQuadratic_zero`, `ellMinus_splitQuadratic_zero`; `sympy/spacetime_null_bridge.py`, `results/null_bridge_summary.json` |
 | Sphere compactness / finiteness bridge | Imported theorem | future `Spacetime/SignatureBridge.lean` bridge or documentation |
 | Wick-rotation / Lorentzian signature bridge as a physical reading | Interpretation | `docs/reader-guide.md`, `docs/proof-visuals.md` |
-| `Λ = 1/2(d-1)(d-2)λ`, with `Λ=3λ` in four spacetime dimensions | Computed here | `sympy/spacetime_exact_checks.py`, `Spacetime/SignatureBridge.lean` scaffold |
+| General `Λ = 1/2(d-1)(d-2)λ` relation | Computed here | `sympy/spacetime_lambda_sign.py`, `results/lambda_sign_summary.json` |
+| In four spacetime dimensions, `Λ=3λ`; if `λ>0`, then `Λ>0` | Lean-proved | `Spacetime/SignatureBridge.lean::cosmologicalFromCurvature_four`, `cosmologicalFromCurvature_four_positive`; `sympy/spacetime_lambda_sign.py`, `results/lambda_sign_summary.json` |
 | Eigenspaces are null/light-cone directions | Interpretation | Step 6 of the paper; bridge theorem pending |
 | `t>0`, `c>0`, and `Λ>0` share the same sign | Interpretation | paper conclusion; formal bridges pending |
 | Full arrow-of-time conclusion | Interpretation | paper conclusion; formal bridges pending |

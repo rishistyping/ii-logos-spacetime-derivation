@@ -42,8 +42,11 @@ Target surfaces:
 - `SignatureModel`
 - `cosmologicalFromCurvature`
 - `cosmologicalFromCurvature_four`
+- `cosmologicalFromCurvature_four_positive`
 
-Status: symbolic scaffold. Geometric compactness and Wick-rotation readings remain `Imported theorem` / `Interpretation`.
+Status: `Lean-proved` for four-dimensional arithmetic only: `Λ=3λ` and `λ>0 -> Λ>0`.
+
+The general geometric compactness and Wick-rotation readings remain `Imported theorem` / `Interpretation`.
 
 ## ST-04 — Time-evolution matrix
 
@@ -96,4 +99,37 @@ Target surfaces:
 - `ellMinus_eigen`
 - `ellPlus_ne_ellMinus`
 
-Status: `Lean-proved` for algebraic eigenvector/eigendirection facts only. Null-vector, light-cone, redshift, horizon, and arrow-of-time readings remain `Interpretation`.
+Status: `Lean-proved` for algebraic eigenvector/eigendirection facts only.
+
+Physical null-vector, light-cone, redshift, horizon, and arrow-of-time readings remain `Interpretation`.
+
+## ST-07 — Algebraic split-null bridge
+
+Lean file: `Spacetime/NullBridge.lean`
+
+Target surfaces:
+
+- `splitQuadratic`
+- `IsSplitNull`
+- `splitQuadratic_scale`
+- `ellPlus_splitQuadratic_zero`
+- `ellMinus_splitQuadratic_zero`
+- `ellPlus_isSplitNull`
+- `ellMinus_isSplitNull`
+
+Status: `Lean-proved` for algebraic split-quadratic facts only.
+
+Physical light-ray and horizon readings remain `Interpretation`.
+
+## ST-08 — Four-dimensional Lambda sign bridge
+
+Lean file: `Spacetime/SignatureBridge.lean`
+
+Target surfaces:
+
+- `cosmologicalFromCurvature_four`
+- `cosmologicalFromCurvature_four_positive`
+
+Status: `Lean-proved` for the four-dimensional arithmetic bridge only.
+
+Observed cosmological interpretation and the full shared-sign thesis remain `Interpretation`.
