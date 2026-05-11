@@ -11,6 +11,15 @@ This repository is a compact companion to *A Brief Derivation of Spacetime*.
 5. Review the Lean scaffold in `Spacetime/`.
 6. Use the visual assets in `viz/` to understand the three sign regimes.
 
+## 20-minute orientation
+
+| Goal | What to open first | Then check |
+| --- | --- | --- |
+| Understand the argument | `docs/public-reader-preview.md` | `README.md` visuals |
+| Verify claim status | `docs/claim-status.md` | `docs/build-status.md` |
+| Audit reproducible evidence | `results/` + `viz/` | `bash scripts/check_all.sh` |
+| Extend the project | `docs/repo-operating-system.md` | `PLANS.md` + `ops/long-horizon/` |
+
 ## What is formalized now
 
 This repository has a public-reader preview and a Lean-proved algebraic surface around

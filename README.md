@@ -28,6 +28,23 @@ This repository is the public verification and explainer companion to *A Brief D
 
 The repository keeps that story honest. Lean 4 supplies proof authority for the exact algebraic surface now encoded. SymPy and Wolfram provide computed companions and reader-facing artifacts. The physical arrow-of-time thesis remains labeled as interpretation until its bridges are separately formalized.
 
+## At a Glance
+
+- `Story path` (no setup): start with the first two sections and the public preview.
+- `Formal path` (with checks): read status board + run `bash scripts/check_all.sh`.
+- `Contributor path`: follow `PLANS.md` + `ops/long-horizon/` for roadmap and gates.
+
+```
+Paper -> Public Story -> Claim Boundary -> Lean + SymPy Evidence
+```
+
+## Public Navigation
+
+- Read first: [`docs/public-reader-preview.md`](docs/public-reader-preview.md)
+- Check boundaries: [`docs/claim-status.md`](docs/claim-status.md)
+- Validate tooling and checks: [`docs/build-status.md`](docs/build-status.md)
+- Deep map: [`docs/proof-visuals.md`](docs/proof-visuals.md)
+
 ## Why This Matters
 
 The usual story says that spacetime comes first and dynamics happens inside it. This paper tries a more architectural route: begin with ordinary positive space, let curvature appear as the failure of translations to commute, and ask what happens when the selected positive branch is read as spacetime.
@@ -118,6 +135,19 @@ flowchart LR
 
 For the deeper public proof map, use [`docs/proof-visuals.md`](docs/proof-visuals.md). For the reader-first explainer, use [`docs/public-reader-preview.md`](docs/public-reader-preview.md).
 
+## Quick Evidence Tour
+
+1. Read the six-step story above and the public preview.
+2. Check the status board for each claim boundary.
+3. Open `results/` and `viz/` to inspect committed evidence.
+4. Run one command:
+
+```bash
+uv sync && bash scripts/check_all.sh
+```
+
+5. Compare `docs/build-status.md` with `docs/claim-status.md`.
+
 ## What Is Proved Now
 
 This is a v1.0 bridge-decomposition release. The promoted Lean surface is intentionally narrow:
@@ -144,11 +174,18 @@ See [`docs/claim-status.md`](docs/claim-status.md) for the canonical claim board
 
 ## Choose Your Path
 
-- `General reader:` Start with [Why This Matters](#why-this-matters), [The Six-Step Story](#the-six-step-story), and [`docs/public-reader-preview.md`](docs/public-reader-preview.md).
-- `Paper reader:` Compare the PDF and TeX in [`paper/`](paper/) with [`docs/paper-lean-notebook-crosswalk.md`](docs/paper-lean-notebook-crosswalk.md).
-- `Formal verifier:` Start with [`Spacetime.lean`](Spacetime.lean), [`Spacetime/`](Spacetime/), and [`docs/theorem-ledger.md`](docs/theorem-ledger.md).
-- `Notebook explorer:` Use [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb), [`sympy/`](sympy/), [`results/`](results/), and [`viz/`](viz/).
-- `Maintainer or publisher:` Use [`docs/repo-operating-system.md`](docs/repo-operating-system.md), [`ops/long-horizon/`](ops/long-horizon/), and [Release Discipline](#release-discipline).
+- `General reader:` [Why This Matters](#why-this-matters) → [`docs/public-reader-preview.md`](docs/public-reader-preview.md)
+- `Researcher:` [The Six-Step Story](#the-six-step-story) → [`docs/paper-lean-notebook-crosswalk.md`](docs/paper-lean-notebook-crosswalk.md) → `paper/`
+- `Formal verifier:` [`docs/claim-status.md`](docs/claim-status.md) → [`docs/theorem-ledger.md`](docs/theorem-ledger.md) → `Spacetime.lean`
+- `Technical explorer:` [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb) + [`sympy/`](sympy/) + `results/` + `viz/`
+- `Maintainer or publisher:` [`docs/repo-operating-system.md`](docs/repo-operating-system.md), [`PLANS.md`](PLANS.md), [`ops/long-horizon/`](ops/long-horizon/), and [Release Discipline](#release-discipline).
+
+## What to do in 20 minutes
+
+1. Read [`docs/public-reader-preview.md`](docs/public-reader-preview.md)
+2. Confirm claim tags in [`docs/claim-status.md`](docs/claim-status.md)
+3. Inspect one artifact file, e.g. `results/eigendirection_summary.json`
+4. Check CI with `bash scripts/check_all.sh`
 
 ## Formal Verification
 

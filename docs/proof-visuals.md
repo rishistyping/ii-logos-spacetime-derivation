@@ -56,6 +56,13 @@ audit trails for the visual narrative, not physical proof objects.
 - `wolfram/assets/notebook_preview_eigenflow.svg`
 - `wolfram/assets/notebook_preview_crosswalk.svg`
 
+## Companion-friendly legend
+
+- `v` markers above are visual navigation, not proof objects.
+- `Lean-proved` appears only where a corresponding declaration exists in Lean and the repo passes `lake build`.
+- `Computed here` appears where files in `sympy/` and `results/` are the source evidence.
+- `Interpretation` is kept for claims beyond the current theorem authority.
+
 ## Boundary
 
 Visuals are not proof objects. They are `Computed here` or `Interpretation` surfaces, depending on the row in `docs/claim-status.md`.

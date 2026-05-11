@@ -4,6 +4,15 @@ This page is a lightweight public guide to *A Brief Derivation of Spacetime*.
 It is meant to be readable before the Lean files, while preserving the same
 truth boundaries used by the repository.
 
+## Start Here (5-minute path)
+
+- Read the three bridges:
+  1. Curvature bracket intuition
+  2. Time-evolution matrix
+  3. Algebraic eigendirections
+- Then check the boundary line:
+  - What is proved (`Lean-proved`), what is computed (`Computed here`), and what remains interpretation.
+
 ## Claim Tags
 
 | Tag | Meaning in this preview |
@@ -123,6 +132,18 @@ flowchart LR
     classDef default fill:#E8EDE5,stroke:#0F233F,stroke-width:1.5px,color:#0F233F;
     linkStyle default stroke:#5D6572,stroke-width:2px;
 ```
+
+## Artifact Guide
+
+The following files are useful for non-specialist readers:
+
+- `results/eigendirection_summary.json`: one-line evidence for eigendirection algebra.
+- `results/null_bridge_summary.json`: algebraic split-null evidence for `Q(ℓ+)` and `Q(ℓ-)`.
+- `results/lambda_sign_summary.json`: four-dimensional and general Lambda bridge evidence.
+- `results/branch_summary.json`: branch classification evidence for `λ>0`, `λ=0`, `λ<0`.
+- `viz/hyperbolic_flow.png` / `viz/parabolic_flow.png` / `viz/elliptic_flow.png`: branch flow intuition.
+
+Use these files as the "evidence room" before or after the story.
 
 ```mermaid
 flowchart LR
