@@ -1,0 +1,38 @@
+{
+  "matrix_A": [
+    [
+      "0",
+      "-lambda"
+    ],
+    [
+      "-1",
+      "0"
+    ]
+  ],
+  "trace": "0",
+  "determinant": "-lambda",
+  "charpoly_variable": "x",
+  "charpoly": "-lambda + x**2",
+  "square": [
+    [
+      "lambda",
+      "0"
+    ],
+    [
+      "0",
+      "lambda"
+    ]
+  ],
+  "square_identity_residual": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0"
+    ]
+  ],
+  "cosmological_relation_general": "Lambda = ((d - 1)*(d - 2)/2)*lambda",
+  "cosmological_relation_d4": "Lambda = 3*lambda"
+}

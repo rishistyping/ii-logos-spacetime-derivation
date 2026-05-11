@@ -1,0 +1,42 @@
+claims:
+  - id: ST-01
+    statement: "Constant-curvature translation-bracket surface [P_a, P_b] = lambda J_ab"
+    status: Interpretation
+    lean_target: "Spacetime/ConstantCurvature.lean"
+    notes: "Scaffolded as symbolic bracket data; not a full Lie-algebra exhaustiveness theorem."
+
+  - id: ST-03
+    statement: "A(lambda) = [[0, -lambda], [-1, 0]]"
+    status: Computed here
+    lean_target: "Spacetime/TimeEvolutionMatrix.lean"
+    computational_artifact: "results/time_evolution_summary.json"
+    notes: "Lean scaffold present; promote only after lake build."
+
+  - id: ST-04
+    statement: "trace(A)=0, det(A)=-lambda, charpoly(A)=x^2-lambda, A^2=lambda I"
+    status: Computed here
+    lean_target: "Spacetime/TimeEvolutionMatrix.lean"
+    computational_artifact: "results/regression_summary.json"
+
+  - id: ST-05-POSITIVE
+    statement: "lambda > 0 corresponds to the hyperbolic algebraic branch"
+    status: Computed here
+    lean_target: "Spacetime/SignVerdict.lean"
+    computational_artifact: "results/branch_summary.json"
+
+  - id: ST-05-ZERO
+    statement: "lambda = 0 corresponds to the parabolic / nilpotent branch"
+    status: Computed here
+    lean_target: "Spacetime/SignVerdict.lean"
+    computational_artifact: "results/branch_summary.json"
+
+  - id: ST-05-NEGATIVE
+    statement: "lambda < 0 corresponds to the elliptic explainer branch"
+    status: Computed here
+    lean_target: "Spacetime/SignVerdict.lean"
+    computational_artifact: "results/branch_summary.json"
+
+  - id: PHYS-01
+    statement: "t > 0, c > 0, and Lambda > 0 share the same sign"
+    status: Interpretation
+    notes: "Full physical bridge remains outside v0 proof authority."

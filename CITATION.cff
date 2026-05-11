@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ii-logos-spacetime-derivation: Formal Verification Companion to 'A Brief Derivation of Spacetime'"
+authors:
+  - family-names: Mostaque
+    given-names: Emad
+    affiliation: Intelligent Internet
+  - family-names: Rishi
+    given-names: Typing
+    affiliation: ii-logos
+version: 0.1.0
+date-released: 2026-05-11
+repository-code: https://github.com/rishistyping/ii-logos-spacetime-derivation
+license: Apache-2.0
+references:
+  - type: paper
+    title: "A Brief Derivation of Spacetime"
+    authors:
+      - family-names: Mostaque
+        given-names: Emad
+    year: 2026
+    publisher: Intelligent Internet

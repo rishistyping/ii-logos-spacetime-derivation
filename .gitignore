@@ -1,0 +1,27 @@
+.DS_Store
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Lean/Lake
+.lake/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# LaTeX build products; keep source .tex and release .pdf tracked.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc

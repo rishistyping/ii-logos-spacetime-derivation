@@ -1,0 +1,18 @@
+symbols:
+  lambda:
+    unicode: "λ"
+    meaning: "curvature/sign parameter"
+    status: "core symbolic parameter"
+  Lambda:
+    unicode: "Λ"
+    meaning: "cosmological constant"
+    relation: "Lambda = ((d - 1)(d - 2)/2) lambda"
+  A:
+    meaning: "time-evolution matrix on each (K_i, P_i) plane"
+    definition: "[[0, -lambda], [-1, 0]]"
+  K:
+    meaning: "boost-like generator coordinate in the 2D plane"
+  P:
+    meaning: "translation-like generator coordinate in the 2D plane"
+  Branch:
+    values: ["positive", "zero", "negative"]

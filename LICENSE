@@ -1,0 +1,6 @@
+This repository uses a split license:
+
+- Code surfaces are licensed under Apache License 2.0. See LICENSES/LICENSE-CODE.
+- Paper, documentation, figures, and presentation assets are licensed under Creative Commons Attribution 4.0 International. See LICENSES/LICENSE-DOCS.
+
+SPDX-License-Identifier: Apache-2.0 AND CC-BY-4.0

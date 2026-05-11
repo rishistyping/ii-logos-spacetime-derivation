@@ -1,0 +1,20 @@
+name: Lean
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - name: Build Lean scaffold
+        run: lake build
+      - name: Check for proof holes
+        run: |
+          if grep -RInE '\bsorry\b|\badmit\b' Spacetime.lean SpacetimeFull.lean Spacetime; then
+            echo "Found proof holes."
+            exit 1
+          fi

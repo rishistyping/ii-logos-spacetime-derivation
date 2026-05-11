@@ -1,0 +1,22 @@
+name: Python checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sympy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Set up Python
+        run: uv python install 3.11
+      - name: Install dependencies
+        run: uv sync
+      - name: Run SymPy checks
+        run: |
+          uv run python sympy/spacetime_exact_checks.py
+          uv run python sympy/spacetime_matrix_oracle.py
+          uv run python sympy/spacetime_regression_check.py
+          uv run python sympy/spacetime_visualize.py

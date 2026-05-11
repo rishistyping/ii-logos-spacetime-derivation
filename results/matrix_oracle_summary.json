@@ -1,0 +1,56 @@
+{
+  "matrix": [
+    [
+      "0",
+      "-lambda"
+    ],
+    [
+      "-1",
+      "0"
+    ]
+  ],
+  "trace": "0",
+  "determinant": "-lambda",
+  "charpoly": "-lambda + x**2",
+  "symbolic_eigenvalues": [
+    "-sqrt(lambda)",
+    "sqrt(lambda)"
+  ],
+  "branches": {
+    "lambda_positive": {
+      "lambda": "1",
+      "branch": "positive",
+      "behavior": "hyperbolic / real split polynomial roots",
+      "trace": "0",
+      "determinant": "-1",
+      "charpoly": "x**2 - 1",
+      "eigenvalues": [
+        "-1",
+        "1"
+      ]
+    },
+    "lambda_zero": {
+      "lambda": "0",
+      "branch": "zero",
+      "behavior": "parabolic / nilpotent",
+      "trace": "0",
+      "determinant": "0",
+      "charpoly": "x**2",
+      "eigenvalues": [
+        "0"
+      ]
+    },
+    "lambda_negative": {
+      "lambda": "-1",
+      "branch": "negative",
+      "behavior": "elliptic explainer behavior over real phase plane",
+      "trace": "0",
+      "determinant": "1",
+      "charpoly": "x**2 + 1",
+      "eigenvalues": [
+        "-I",
+        "I"
+      ]
+    }
+  }
+}

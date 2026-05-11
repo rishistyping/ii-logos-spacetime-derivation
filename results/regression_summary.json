@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": [
+    "trace(A) == 0",
+    "det(A) == -lambda",
+    "charpoly(A) == x**2 - lambda",
+    "A**2 == lambda*I",
+    "lambda=0 gives A**2 == 0",
+    "lambda=1 gives det(A) < 0",
+    "lambda=-1 gives det(A) > 0"
+  ]
+}
