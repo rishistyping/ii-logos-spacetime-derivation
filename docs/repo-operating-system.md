@@ -48,7 +48,7 @@ under `ops/long-horizon/`, which is the repository's ExecPlan surface:
 - `implement.md`: execution contract, validation discipline, and merge rules.
 - `documentation.md`: operator runbook, repo map, setup, verification, and release checklist.
 
-## Current v0.5 live frontier
+## Current v1.0 live frontier
 
 The current frontier is not a broad physical proof. It is the narrow matrix and bridge spine:
 

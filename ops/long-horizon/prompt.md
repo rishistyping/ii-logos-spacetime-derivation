@@ -5,11 +5,11 @@ explainer companion to *A Brief Derivation of Spacetime*.
 
 ## Mission
 
-Mature the repository from the current v0.5 proof surface toward a disciplined
+Mature the repository from the current v1.0 proof surface toward a disciplined
 v1.0 release. The work must promote only conservative algebraic or arithmetic
 bridge packets backed by Lean declarations and deterministic computed artifacts.
 
-The current v0.5 public truth status remains active until later proof work lands
+The current v1.0 public truth status remains active until later proof work lands
 and passes the full validation gate.
 
 ## Hard Requirements

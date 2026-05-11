@@ -95,9 +95,9 @@ this repository yet.
 
 `Truth tag: Interpretation`
 
-## v0.5 Bridge Decomposition
+## v1.0 Bridge Decomposition
 
-The new v0.5 layer separates two algebraic bridge facts from the later
+The new v1.0 layer separates two algebraic bridge facts from the later
 physical story.
 
 | Claim | Truth tag | Repository surface |
@@ -140,7 +140,7 @@ flowchart LR
 ## Boundary To Remember
 
 The public preview is allowed to explain the paper's story, but it must not
-change the proof status of any claim. As of v0.5, the repository has promoted
+change the proof status of any claim. As of v1.0, the repository has promoted
 the exact matrix spine, branch markers, algebraic eigendirections, algebraic
 split-nullness, and four-dimensional Lambda sign arithmetic.
 

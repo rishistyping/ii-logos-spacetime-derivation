@@ -13,7 +13,7 @@ This repository is a compact companion to *A Brief Derivation of Spacetime*.
 
 ## What is formalized now
 
-The v0.5 repository has a public-reader preview and a Lean-proved algebraic surface around
+This repository has a public-reader preview and a Lean-proved algebraic surface around
 
 ```text
 A(λ) = [[0, -λ], [-1, 0]].

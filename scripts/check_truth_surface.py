@@ -111,11 +111,11 @@ def check_specs() -> None:
 
 def check_docs() -> None:
     expected = {
-        "README.md": "v0.5",
-        "docs/claim-status.md": "Current v0.5 Status",
-        "docs/build-status.md": "v0.5",
-        "docs/repo-operating-system.md": "v0.5",
-        "PLANS.md": "v0.5",
+        "README.md": "v1.0",
+        "docs/claim-status.md": "Current v1.0 Status",
+        "docs/build-status.md": "v1.0",
+        "docs/repo-operating-system.md": "v1.0",
+        "PLANS.md": "v1.0",
     }
     for path, needle in expected.items():
         if needle not in read_text(path):
@@ -123,10 +123,10 @@ def check_docs() -> None:
 
     pyproject = read_text("pyproject.toml")
     citation = read_text("CITATION.cff")
-    if 'version = "0.5.0"' not in pyproject:
-        fail("pyproject.toml version must be 0.5.0")
-    if "version: 0.5.0" not in citation:
-        fail("CITATION.cff version must be 0.5.0")
+    if 'version = "1.0.0"' not in pyproject:
+        fail("pyproject.toml version must be 1.0.0")
+    if "version: 1.0.0" not in citation:
+        fail("CITATION.cff version must be 1.0.0")
 
     doc_paths = [
         "README.md",

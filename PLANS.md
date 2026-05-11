@@ -94,7 +94,7 @@ Status: complete.
 
 ## v1.0 — Release readiness
 
-Status: planned.
+Status: complete.
 
 - Freeze the promoted theorem surface.
 - Run local and GitHub validation gates.

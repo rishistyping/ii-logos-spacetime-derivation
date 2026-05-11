@@ -8,7 +8,7 @@ proof-surface program.
 `ii-logos-spacetime-derivation` is a public verification and explainer
 companion to *A Brief Derivation of Spacetime*.
 
-The current v0.5 proof surface promotes:
+The current v1.0 proof surface promotes:
 
 - exact time-evolution matrix identities;
 - algebraic sign-branch markers;

@@ -1,6 +1,6 @@
 [project]
 name = "ii-logos-spacetime-derivation"
-version = "0.5.0"
+version = "1.0.0"
 description = "Verification and explainer skeleton for A Brief Derivation of Spacetime"
 requires-python = ">=3.10"
 dependencies = [

@@ -7,7 +7,7 @@ The sign is structural. The magnitude is empirical. The bridge is tracked claim 
   <a href="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/python-checks.yml"><img src="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/python-checks.yml/badge.svg" alt="Python checks" /></a>
   <a href="paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf"><img src="https://img.shields.io/badge/paper-PDF-334155" alt="Paper PDF" /></a>
   <a href="docs/notebooks.md"><img src="https://img.shields.io/badge/notebook-guide-0f766e" alt="Notebook guide" /></a>
-  <a href="docs/claim-status.md"><img src="https://img.shields.io/badge/claims-v0.5%20truth%20surface-15803d" alt="Claim status" /></a>
+  <a href="docs/claim-status.md"><img src="https://img.shields.io/badge/claims-v1.0%20truth%20surface-15803d" alt="Claim status" /></a>
   <a href="docs/proof-visuals.md"><img src="https://img.shields.io/badge/visuals-LOGOS%20style-b88a2e" alt="Proof visuals" /></a>
   <a href="https://ii.inc"><img src="https://img.shields.io/badge/Homepage-II.inc-blue" alt="Intelligent Internet Homepage" /></a>
   <a href="https://ii.inc/web/blog/post/logos"><img src="https://img.shields.io/badge/Blog-II--LOGOS-blue" alt="II-LOGOS Blog" /></a>
@@ -72,7 +72,7 @@ For nonnegative `λ`, Lean proves the algebraic eigendirection equations:
 ℓ- = ( √λ, 1),  A(λ)ℓ- = -√λ ℓ-
 ```
 
-v0.5 adds the split-form bridge:
+v1.0 adds the split-form bridge:
 
 ```text
 Q(k,p) = k² - λp²
@@ -120,7 +120,7 @@ For the deeper public proof map, use [`docs/proof-visuals.md`](docs/proof-visual
 
 ## What Is Proved Now
 
-This is a v0.5 bridge-decomposition release. The promoted Lean surface is intentionally narrow:
+This is a v1.0 bridge-decomposition release. The promoted Lean surface is intentionally narrow:
 
 | Packet | Status | What it covers |
 | --- | --- | --- |
@@ -183,7 +183,7 @@ bash scripts/check_all.sh
 
 The helper runs the SymPy exact/eigendirection/bridge checks, regenerates JSON and visual artifacts, checks artifact drift, validates truth surfaces, scans Lean files for proof holes, and runs `lake build`.
 
-If you are not using `uv`, install the core Python dependencies from `requirements.txt` and run the same helper. Lean/Lake is required for the full v0.5 validation gate.
+If you are not using `uv`, install the core Python dependencies from `requirements.txt` and run the same helper. Lean/Lake is required for the full v1.0 validation gate.
 
 The notebook dependency surface is optional:
 
@@ -231,4 +231,4 @@ docs/build-status.md
 README.md
 ```
 
-The final physical sentence that `t > 0`, `c > 0`, and `Λ > 0` share the same sign remains `Interpretation` in v0.5.
+The final physical sentence that `t > 0`, `c > 0`, and `Λ > 0` share the same sign remains `Interpretation` in v1.0.

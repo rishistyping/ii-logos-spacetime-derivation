@@ -5,7 +5,7 @@ in `PLANS.md`; current claim authority lives in `docs/claim-status.md`.
 
 ## Current Baseline
 
-- v0.5 is shipped.
+- v0.5 is shipped; v1.0 is release-ready after green validation.
 - `main` is clean and synced.
 - Current promoted surface: matrix spine, branch markers, eigendirections,
   split quadratic facts, and four-dimensional Lambda arithmetic.

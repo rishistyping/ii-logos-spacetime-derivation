@@ -9,7 +9,7 @@ This board is the canonical human-readable summary of what is proved, computed, 
 - `Imported theorem`
 - `Interpretation`
 
-## Current v0.5 Status
+## Current v1.0 Status
 
 - The repository is a conservative verification/explainer companion.
 - The exact `A(λ)` matrix spine is `Lean-proved`.
