@@ -46,7 +46,8 @@ Target surfaces:
 
 Status: `Lean-proved` for four-dimensional arithmetic only: `Λ=3λ` and `λ>0 -> Λ>0`.
 
-The general geometric compactness and Wick-rotation readings remain `Imported theorem` / `Interpretation`.
+The general geometric compactness/finiteness bridge remains `Imported theorem`, and
+Wick-rotation / Lorentzian signature interpretation remains `Interpretation`.
 
 ## ST-04 — Time-evolution matrix
 
@@ -101,7 +102,7 @@ Target surfaces:
 
 Status: `Lean-proved` for algebraic eigenvector/eigendirection facts only.
 
-Physical null-vector, light-cone, redshift, horizon, and arrow-of-time readings remain `Interpretation`.
+Physical null-vector/light-cone, redshift, horizon, and arrow-of-time readings remain `Interpretation`.
 
 ## ST-07 — Algebraic split-null bridge
 
@@ -132,7 +133,7 @@ Target surfaces:
 
 Status: `Lean-proved` for the four-dimensional arithmetic bridge only.
 
-Observed cosmological interpretation and the full shared-sign thesis remain `Interpretation`.
+Observed cosmological interpretation and the full shared-sign thesis (`t>0,c>0,Λ>0`) remain `Interpretation`.
 
 ## ST-09 — Split-cone packet
 

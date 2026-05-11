@@ -129,6 +129,26 @@ claims:
     computational_artifact: "results/bracket_surface_summary.json"
     notes: "No Lie-algebra exhaustiveness claim is introduced."
 
+  - id: ST-12-SPHERE-COMPACTNESS
+    statement: "Sphere compactness / finiteness bridge is an external mathematical input used in the paper's physical selection step."
+    status: Imported theorem
+    notes: "This bridge is treated as an imported external premise until separately formalized."
+
+  - id: ST-13-WICK-ROTATION
+    statement: "Wick-rotation / Lorentzian signature reading is a physical interpretation bridge."
+    status: Interpretation
+    notes: "Current scope keeps signature-change reading in Interpretation until explicitly formalized."
+
+  - id: ST-14-EIGENDIRECTION-LIGHT-CONE
+    statement: "Eigenspaces are geometric light-cone directions."
+    status: Interpretation
+    notes: "Algebraic eigendirections are Lean-proved; geometric interpretation remains pending."
+
+  - id: ST-15-HORIZON-REDSHIFT-ARROW
+    statement: "Horizon, redshift, and arrow-of-time reading."
+    status: Interpretation
+    notes: "Interpretation only; no physical bridge theorem has been formalized yet."
+
   - id: PHYS-01
     statement: "t > 0, c > 0, and Lambda > 0 share the same sign"
     status: Interpretation

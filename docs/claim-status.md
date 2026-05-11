@@ -42,7 +42,7 @@ This board is the canonical human-readable summary of what is proved, computed, 
 | `ST-11-BRACKET-SURFACE`: constant-curvature bracket-surface hygiene and algebraic split rules are `Lean-proved` | Lean-proved | `Spacetime/ConstantCurvature.lean`, `results/bracket_surface_summary.json` |
 | Eigenspaces are null/light-cone directions | Interpretation | Step 6 of the paper; bridge theorem pending |
 | `t>0`, `c>0`, and `Λ>0` share the same sign | Interpretation | paper conclusion; formal bridges pending |
-| Full arrow-of-time conclusion | Interpretation | paper conclusion; formal bridges pending |
+| Horizon, redshift, and arrow-of-time reading | Interpretation | paper conclusion; formal bridges pending |
 
 ## Discipline
 
