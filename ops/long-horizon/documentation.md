@@ -1,37 +1,92 @@
-# v0.5 Documentation Sync
+# ExecPlan Documentation Runbook
 
-Documentation changes for v0.5 must move together.
+This runbook summarizes how to operate the repository during the v0.6-v1.0
+proof-surface program.
 
-## Required Public Surfaces
+## Project
 
-- `README.md`
-- `PLANS.md`
-- `CHANGELOG.md`
-- `docs/claim-status.md`
-- `docs/theorem-ledger.md`
-- `docs/paper-lean-notebook-crosswalk.md`
-- `docs/public-reader-preview.md`
-- `docs/build-status.md`
-- `docs/repo-operating-system.md`
-- `spec/claims.yaml`
-- `spec/equations.yaml`
-- `results/manifest.json`
+`ii-logos-spacetime-derivation` is a public verification and explainer
+companion to *A Brief Derivation of Spacetime*.
 
-## Required Claim Tags
+The current v0.5 proof surface promotes:
 
-- `Lean-proved`
-- `Computed here`
-- `Imported theorem`
-- `Interpretation`
+- exact time-evolution matrix identities;
+- algebraic sign-branch markers;
+- algebraic eigendirections;
+- algebraic split-quadratic facts;
+- four-dimensional Lambda arithmetic.
 
-## v0.5 Public Message
+The following remain below proof status:
 
-The repository now has two small bridge promotions:
+- geometric null interpretation;
+- horizons and redshift;
+- arrow orientation;
+- `PHYS-01` shared-sign thesis.
 
-- Algebraic split-nullness of the two eigendirections is Lean-proved.
-- In four dimensions, `Lambda = 3 lambda` and `lambda > 0 -> Lambda > 0`
-  are Lean-proved.
+## Local Setup
 
-The physical reading remains intentionally separate: light-cone language,
-horizon/redshift discussion, arrow orientation, and the shared-sign thesis stay
-tagged as interpretation or imported background.
+```bash
+uv sync --frozen
+```
+
+Optional notebook dependencies:
+
+```bash
+uv sync --extra notebooks
+```
+
+## Verification Commands
+
+```bash
+git diff --check
+python3 -m py_compile docs/assets/render_readme_assets.py scripts/check_truth_surface.py
+bash scripts/check_all.sh
+```
+
+For proof milestones, also record:
+
+```bash
+lake build
+rg -n '\bsorry\b|\badmit\b' Spacetime.lean SpacetimeFull.lean Spacetime/*.lean
+```
+
+## Repository Structure
+
+```text
+paper/                    Paper source and PDF
+Spacetime/                Lean proof-surface modules
+sympy/                    Deterministic computed companion scripts
+results/                  JSON artifacts and manifest
+viz/                      Deterministic visual artifacts
+docs/                     Human-readable truth surfaces and guides
+docs/assets/              README visual assets and renderer
+spec/                     Machine-readable claims, equations, symbols
+scripts/                  Local validation gates
+ops/long-horizon/         ExecPlan control plane
+```
+
+## Planned Packets
+
+- `ST-09-SPLIT-CONE`: algebraic cone predicate around `splitQuadratic`.
+- `ST-10-LAMBDA-GENERAL-SIGN`: general-dimensional arithmetic sign bridge with
+  explicit assumptions.
+- `ST-11-BRACKET-SURFACE`: symbolic bracket-surface strengthening without
+  exhaustiveness claims.
+
+## Release Checklist
+
+- Local full gate passes.
+- Public truth surfaces are synchronized.
+- `results/manifest.json` includes every committed artifact.
+- GitHub Actions Python and Lean pass on the feature branch.
+- `main` is updated only from a green branch.
+- Release tag is created only after `main` is green.
+
+## Troubleshooting
+
+- If artifact drift appears, rerun the relevant producer and inspect whether the
+  writer is deterministic across platforms.
+- If truth-surface checks fail, inspect the exact line and separate algebraic
+  proof language from physical interpretation language.
+- If Lean proof work grows beyond a packet-sized module, split the milestone
+  before continuing.

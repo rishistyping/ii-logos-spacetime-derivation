@@ -38,15 +38,15 @@ Before any claim is promoted to `Lean-proved`:
 - [ ] `spec/claims.yaml` is updated.
 - [ ] `docs/build-status.md` records the validation.
 
-## Operational control plane
+## ExecPlan control plane
 
-`PLANS.md` remains the public roadmap. The larger incremental build plan is
-tracked under `ops/long-horizon/`:
+`PLANS.md` remains the public roadmap. The v0.6-v1.0 execution plan is tracked
+under `ops/long-horizon/`, which is the repository's ExecPlan surface:
 
-- `prompt.md`: mission, non-goals, and authority order.
-- `plans.md`: execution waves.
-- `implement.md`: implementation state and merge discipline.
-- `documentation.md`: truth-surface sync requirements.
+- `prompt.md`: mission, hard requirements, target packets, and proof boundary.
+- `plans.md`: milestone table, risk register, validation checklist, and future claim IDs.
+- `implement.md`: execution contract, validation discipline, and merge rules.
+- `documentation.md`: operator runbook, repo map, setup, verification, and release checklist.
 
 ## Current v0.5 live frontier
 

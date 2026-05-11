@@ -1,43 +1,70 @@
-# v0.5 Execution Plans
+# ExecPlan: v0.6-v1.0 Proof Surface And Repository Development
 
-This file is the internal execution control surface. Public roadmap language
-lives in `PLANS.md`.
+This is the internal execution control surface. Public roadmap language lives
+in `PLANS.md`; current claim authority lives in `docs/claim-status.md`.
 
-## Wave v0.4.1 - Reliability Baseline
+## Current Baseline
 
-- Add operational control docs under `ops/long-horizon/`.
-- Split validation into Python, Lean, artifact, and truth-surface gates.
-- Harden CI with read-only permissions, concurrency, timeouts, frozen `uv`
-  sync, artifact drift checks, and truth-surface checks.
+- v0.5 is shipped.
+- `main` is clean and synced.
+- Current promoted surface: matrix spine, branch markers, eigendirections,
+  split quadratic facts, and four-dimensional Lambda arithmetic.
+- Current unpromoted surface: geometric null reading, horizons, redshift, arrow
+  orientation, and `PHYS-01`.
 
-## Wave v0.5.1 - Claim Decomposition
+## Architecture Approach
 
-- Add explicit public claim rows for:
-  - `ST-07-SPLIT-NULL`
-  - `ST-08-LAMBDA-SIGN`
-- Keep physical bridge readings interpretive.
+- Keep Lean modules small and bridge-specific.
+- Add a new module only when it owns a coherent proof packet.
+- Add a matching SymPy producer only when a deterministic computed artifact
+  helps audit or explain the packet.
+- Move truth surfaces together: README, claim status, theorem ledger, crosswalk,
+  specs, manifest, build status, and public preview.
 
-## Wave v0.5.2 - Null Algebra Bridge
+## Milestone Table
 
-- Add `Spacetime/NullBridge.lean`.
-- Prove algebraic split-nullness of `ellPlus` and `ellMinus`.
-- Generate `results/null_bridge_summary.json`.
+| Milestone | Scope | Target surfaces | Acceptance criteria | Validation |
+| --- | --- | --- | --- | --- |
+| v0.6 Proof-surface audit | Inventory possible bridge packets and classify them before proof work. | `docs/claim-status.md`, `docs/theorem-ledger.md`, `spec/claims.yaml`, `PLANS.md` | Adds future rows for `ST-09`, `ST-10`, and `ST-11` without promoting them. | `git diff --check`; truth-boundary scan; `bash scripts/check_all.sh` |
+| v0.7 Algebraic split-cone packet | Add a predicate around `splitQuadratic` and prove basic algebraic closure facts only. | `Spacetime/SplitCone.lean`, `sympy/spacetime_split_cone.py`, `results/split_cone_summary.json` | Packet is promoted only as algebra after Lean build and artifact sync. | `lake build`; `bash scripts/check_all.sh`; artifact drift check |
+| v0.8 Arithmetic and bracket packets | Strengthen safe dimension arithmetic and symbolic bracket surface. | `Spacetime/SignatureBridge.lean`, `Spacetime/ConstantCurvature.lean`, new SymPy summaries if useful | General Lambda sign claims require explicit assumptions; bracket claims do not claim exhaustiveness. | `lake build`; proof-hole scan; truth-surface check |
+| v0.9 Public sync pass | Align reader docs, notebook walkthrough, visual assets, and result manifest. | README, `docs/`, `notebooks/`, `results/manifest.json` | Public surfaces show the same claim statuses and no stale version drift. | README link check; `bash scripts/check_all.sh`; GitHub Actions |
+| v1.0 Release readiness | Freeze the promoted theorem surface and release only if validation is green. | `CHANGELOG.md`, `CITATION.cff`, `pyproject.toml`, tag metadata | Version and tag move only after `main` is green; physical thesis remains below proof status unless separately proved. | local full gate; GitHub Python and Lean; tag workflows |
 
-## Wave v0.5.3 - Lambda Sign Bridge
+## Future Claim IDs
 
-- Extend `Spacetime/SignatureBridge.lean`.
-- Prove the four-dimensional sign bridge
-  `0 < lambda -> 0 < cosmologicalFromCurvature 4 lambda`.
-- Generate `results/lambda_sign_summary.json`.
+- `ST-09-SPLIT-CONE`: algebraic cone predicate and closure facts around
+  `splitQuadratic`.
+- `ST-10-LAMBDA-GENERAL-SIGN`: arithmetic sign bridge for
+  `cosmologicalFromCurvature d λ` under explicit assumptions on `d` and `λ`.
+- `ST-11-BRACKET-SURFACE`: symbolic bracket antisymmetry/index hygiene and
+  surface checks for `[P_a, P_b] = λJ_ab`.
 
-## Wave v0.5.4 - Flow and Invariant Artifacts
+## Verification Checklist
 
-- Generate deterministic summaries for branch flow scaling and the invariant
-  split quadratic form.
-- Upgrade `results/manifest.json` to schema v2.
+- [ ] `uv sync --frozen`
+- [ ] `git diff --check`
+- [ ] `python3 -m py_compile docs/assets/render_readme_assets.py scripts/check_truth_surface.py`
+- [ ] `bash scripts/check_all.sh`
+- [ ] `lake build`
+- [ ] proof-hole scan over `Spacetime.lean`, `SpacetimeFull.lean`, and `Spacetime/*.lean`
+- [ ] artifact regeneration plus `git diff --exit-code results/ viz/`
+- [ ] truth-surface sync across README, docs, specs, manifest, and build status
+- [ ] GitHub Actions Python and Lean green before `main` or tags move
 
-## Wave v0.5.5 - Truth-Surface Sync and Release
+## Risk Register
 
-- Synchronize README, docs, specs, build status, and release notes.
-- Run the final local validation gate.
-- Push only after the integration branch is green.
+| Risk | Mitigation |
+| --- | --- |
+| Overclaiming physical interpretation | Keep boundary terms below proof status unless backed by named Lean declarations and synchronized truth surfaces. |
+| Truth-surface drift | Run `scripts/check_truth_surface.py` and update all public surfaces in the same commit. |
+| Nondeterministic artifacts | Use deterministic stdlib writers where possible; keep artifact drift checks in CI. |
+| Lean scope creep | Keep `Mat2` / `Vec2` style and add only packet-sized modules. |
+| Version churn | Do not change package/citation version until release-readiness milestone. |
+
+## Implementation Notes
+
+- The first implementation milestone after this planning refresh should be v0.6
+  proof-surface audit, not new theorem code.
+- If a future packet cannot be proved cleanly, downgrade it to `Computed here`
+  or `Interpretation` and record the reason in the theorem ledger.

@@ -6,6 +6,9 @@ This v0.5 truth-surface pass was validated locally on 2026-05-11 with Python 3.1
 
 The Lean entrypoint is `lakefile.lean` for compatibility with the pinned Lean/Lake release.
 
+This file records validated status. Future execution plans live in
+`ops/long-horizon/` and do not change current claim authority by themselves.
+
 ## Last local checks recorded during the v0.5 promotion
 
 - Python exact checks: passing
