@@ -4,15 +4,18 @@ The skeletal visual layer should compress the argument without adding proof auth
 
 ## Current assets
 
+- `docs/public-reader-preview.md`
 - `viz/hyperbolic_flow.png`
 - `viz/parabolic_flow.png`
 - `viz/elliptic_flow.png`
 
-These are generated from `sympy/spacetime_visualize.py` and illustrate the three regimes of the exact matrix
+The `viz/` images are generated from `sympy/spacetime_visualize.py` and illustrate the three regimes of the exact matrix
 
 ```text
 A(λ) = [[0, -λ], [-1, 0]].
 ```
+
+The public reader preview combines those images with Mermaid diagrams and visible truth tags. It does not add proof authority.
 
 ## Target v1 assets
 

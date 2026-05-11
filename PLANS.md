@@ -30,13 +30,15 @@ Status: complete.
 
 ## v0.4 — Public reader preview
 
-Status: next.
+Status: complete.
 
 - Improve public reader experience with a generated notebook preview or lightweight docs page.
 - Do not add an interactive web companion yet.
 - Keep truth-surface tags visible near any rendered explainer content.
 
 ## v0.5 — Physical bridge decomposition
+
+Status: next.
 
 Break the paper's final sign thesis into separate bridge claims before any promotion attempt:
 

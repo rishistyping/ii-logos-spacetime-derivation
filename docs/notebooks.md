@@ -13,9 +13,12 @@ The notebook surfaces are public explainers, not proof authority.
 ```bash
 python sympy/spacetime_exact_checks.py
 python sympy/spacetime_matrix_oracle.py
+python sympy/spacetime_eigendirections.py
 python sympy/spacetime_regression_check.py
 python sympy/spacetime_visualize.py
 ```
+
+For a lightweight rendered narrative using the committed artifacts, read `docs/public-reader-preview.md`.
 
 Then, when a Wolfram runtime is available:
 

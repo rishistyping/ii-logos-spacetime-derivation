@@ -51,9 +51,14 @@ For positive `λ`, that matrix separates into two algebraic eigendirections:
 ℓ- = ( √λ, 1),  A(λ)ℓ- = -√λ ℓ-
 ```
 
-The paper reads the expanding direction as the future-facing sign of time. The repository keeps that last move honest: algebraic eigendirections are now Lean-proved, while the null/light-cone and horizon interpretation remains outside the proved surface.
+The paper reads the expanding direction as the future-facing sign of time. The repository keeps that last move honest: algebraic eigendirections are now Lean-proved.
+
+The null/light-cone and horizon interpretation remains outside the proved surface.
 
 ## Explainable Map
+
+For a guided public-facing version of this arc, read
+[`docs/public-reader-preview.md`](docs/public-reader-preview.md).
 
 ```mermaid
 flowchart LR
@@ -81,7 +86,7 @@ flowchart LR
 
 ## Current Verification Status
 
-This is a **v0.3 verification skeleton**. Lean is the intended proof authority for exact algebraic and matrix identities. SymPy and Wolfram are computational and explanatory companions. Physical interpretations such as the arrow of time and the shared sign of `t`, `c`, and `Λ` remain tagged as `Interpretation` until each bridge is separately formalized.
+This is a **v0.4 public-reader preview** over a v0.3 verification skeleton. Lean is the intended proof authority for exact algebraic and matrix identities. SymPy and Wolfram are computational and explanatory companions. Physical interpretations such as the arrow of time and the shared sign of `t`, `c`, and `Λ` remain tagged as `Interpretation` until each bridge is separately formalized.
 
 The exact matrix spine, algebraic branch markers, and positive-branch algebraic eigendirections have been promoted to `Lean-proved` after `lake build`.
 
@@ -117,7 +122,7 @@ For `λ > 0`, Lean also proves `ℓ+ ≠ ℓ-`. The claim that these eigendirect
 ## Choose your path
 
 - `General reader:` Start with [The Idea In Plain English](#the-idea-in-plain-english), [The Six-Step Story](#the-six-step-story), and the paper PDF in [`paper/`](paper/).
-- `Paper reader:` Compare the paper source in [`paper/`](paper/) with the status board in [`docs/claim-status.md`](docs/claim-status.md).
+- `Paper reader:` Compare the paper source in [`paper/`](paper/), the public preview in [`docs/public-reader-preview.md`](docs/public-reader-preview.md), and the status board in [`docs/claim-status.md`](docs/claim-status.md).
 - `Formal verifier:` Start with [`Spacetime.lean`](Spacetime.lean), [`Spacetime/`](Spacetime/), and [`docs/theorem-ledger.md`](docs/theorem-ledger.md).
 - `Notebook explorer:` Use [`sympy/`](sympy/), [`results/`](results/), [`viz/`](viz/), and the Colab-style notebook stub in [`notebooks/spacetime_sympy_colab.ipynb`](notebooks/spacetime_sympy_colab.ipynb).
 - `Maintainer or publisher:` Use [`docs/`](docs/), [`spec/`](spec/), and [Release discipline](#release-discipline) before promoting any new claim.
@@ -188,4 +193,4 @@ docs/build-status.md
 README.md
 ```
 
-The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.3.
+The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.4.
