@@ -8,7 +8,7 @@
 <meta name="description" content="A Brief Derivation of Spacetime. A public editorial companion to the II-LOGOS proof surface for the paper and formalization." />
 <title>A Brief Derivation of Spacetime — LOGOS</title>
 <meta property="og:title" content="A Brief Derivation of Spacetime — LOGOS" />
-<meta property="og:description" content="A public companion to the LLam-based spacetime derivation scaffold in II-LOGOS." />
+<meta property="og:description" content="A public companion to the LLM-based spacetime derivation scaffold in II-LOGOS." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://github.com/rishistyping/ii-logos-spacetime-derivation/" />
 <meta property="og:image" content="https://op.ii.inc/madeby.png" />
@@ -552,6 +552,11 @@ section pre{
   outline-offset:2px;
 }
 
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
 @media (hover: hover) and (pointer: fine){
   .btn:hover,
   .hero-chip:hover,
@@ -568,6 +573,18 @@ section pre{
   #chat-controls button:active,
   .chat-drawer__close:active{
     transform:scale(.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .chat-msg--generating{
+    animation: none !important;
   }
 }
 </style>
@@ -602,6 +619,8 @@ section pre{
         <a class="btn btn--primary" href="paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf" target="_blank" rel="noopener">Read the paper<span class="arrow">→</span></a>
         <a class="btn" href="docs/public-reader-preview.md" target="_blank" rel="noopener">Start here in 5 minutes<span class="arrow">→</span></a>
         <button class="btn" id="chat-open-btn" type="button">Ask the paper<span class="arrow">→</span></button>
+        <a class="btn" href="#story">Explore the six-step story<span class="arrow">→</span></a>
+        <a class="btn" href="#claims">Check claim boundaries<span class="arrow">→</span></a>
       </div>
       <div class="hero__chips" id="hero-prompts" aria-label="Ask the paper a starter question">
         <button class="hero-chip" type="button" data-chat-prompt="Give me the six-step story in two minutes.">Six-step story</button>
