@@ -17,7 +17,7 @@ Target surfaces:
 - `Mat2.mul`
 - `Mat2.scalar`
 
-Status: scaffolded and locally build-validated; promote only in a synchronized truth-surface pass.
+Status: build-validated support surface; not a standalone promoted paper claim.
 
 ## ST-02 — Constant-curvature bracket surface
 
@@ -60,7 +60,7 @@ Target surfaces:
 - `positive_branch_det_negative`
 - `negative_branch_det_positive`
 
-Status: core v0 Lean target, locally build-validated. Promote only in a synchronized truth-surface pass.
+Status: `Lean-proved` for the exact v0.2 matrix spine. This promotion covers the definition of `A(λ)`, trace, determinant, characteristic polynomial, square identity, and determinant/square branch facts only.
 
 ## ST-05 — Sign verdict boundary
 
@@ -75,4 +75,4 @@ Target surfaces:
 - `zeroBranch_parabolicAlgebraic`
 - `negativeBranch_ellipticAlgebraic`
 
-Status: algebraic boundary only. Physical sign thesis remains `Interpretation`.
+Status: `Lean-proved` for algebraic branch markers only. Physical sign thesis remains `Interpretation`.

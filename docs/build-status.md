@@ -2,11 +2,11 @@
 
 ## Current environment note
 
-This v0 skeleton was validated locally on 2026-05-11 with Python 3.11, `uv`, Lean/Lake, and the pinned Lean 4.7.0 toolchain.
+This v0.2 truth-surface pass was validated locally on 2026-05-11 with Python 3.11, `uv`, Lean/Lake, and the pinned Lean 4.7.0 toolchain.
 
 The Lean entrypoint is `lakefile.lean` for compatibility with the pinned Lean/Lake release.
 
-## Last local checks recorded during this skeleton patch
+## Last local checks recorded during the v0.2 promotion
 
 - Python exact checks: passing
 - Python matrix oracle: passing
@@ -14,6 +14,7 @@ The Lean entrypoint is `lakefile.lean` for compatibility with the pinned Lean/La
 - Python visualization generation: passing
 - Lean proof-hole scan: passing; no `sorry` or `admit` in `Spacetime.lean`, `SpacetimeFull.lean`, or `Spacetime/*.lean`
 - Lean build: passing via `lake build`
+- Truth-surface promotion: exact matrix spine and algebraic branch markers promoted to `Lean-proved`; physical bridge claims remain `Interpretation`.
 
 ## Commands
 
@@ -28,4 +29,4 @@ lake build
 rg -n '\bsorry\b|\badmit\b' Spacetime.lean SpacetimeFull.lean Spacetime/*.lean
 ```
 
-Only after that gate is green should rows move to `Lean-proved`.
+Future promotions must rerun this gate before any additional rows move to `Lean-proved`.

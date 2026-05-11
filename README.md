@@ -1,6 +1,6 @@
 # A Brief Derivation of Spacetime
 
-[![Lean](https://img.shields.io/badge/Lean-skeletal-blue)](https://lean-lang.org/)
+[![Lean](https://img.shields.io/badge/Lean-v0.2%20proved-blue)](https://lean-lang.org/)
 [![SymPy](https://img.shields.io/badge/SymPy-exact%20checks-green)](https://www.sympy.org/)
 [![Wolfram](https://img.shields.io/badge/Wolfram-notebook%20plan-orange)](https://www.wolfram.com/wolfram-engine/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC--BY--4.0-15803d)](LICENSE)
@@ -11,9 +11,9 @@ Lean is the intended proof authority for exact algebraic and matrix identities. 
 
 ## Current status
 
-This is a **v0 skeleton**. It contains a conservative Lean scaffold, exact SymPy checks, result artifacts, visualization assets, and proof-boundary documentation. No claim is promoted to `Lean-proved` until a real local or CI `lake build` succeeds and the truth surfaces are updated together.
+This is a **v0.2 verification skeleton**. The exact matrix spine and algebraic branch markers have been promoted to `Lean-proved` after `lake build`; physical interpretations remain `Interpretation`.
 
-The current exact computational spine is:
+The current `Lean-proved` matrix spine is:
 
 ```text
 A(λ) = [[0, -λ],
@@ -25,13 +25,13 @@ charpoly(A) = x² - λ
 A(λ)²       = λ I
 ```
 
-The current branch interpretation is:
+The current branch surface is:
 
-| Branch | Exact matrix fact | Notebook / explainer reading |
+| Branch | Lean-proved algebraic fact | Notebook / explainer reading |
 | --- | --- | --- |
-| `λ > 0` | `det(A) < 0` and `x² - λ` has real split roots | hyperbolic flow |
+| `λ > 0` | `det(A) < 0` and the hyperbolic algebraic marker holds | SymPy records real split roots; hyperbolic flow |
 | `λ = 0` | `A² = 0` | parabolic / nilpotent limit |
-| `λ < 0` | `det(A) > 0` and `trace(A)=0` | elliptic flow |
+| `λ < 0` | `det(A) > 0`, `trace(A)=0`, and the elliptic algebraic marker holds | elliptic flow |
 
 ## Choose your path
 
@@ -76,7 +76,7 @@ uv sync --extra notebooks
 ```
 
 If Lean is unavailable, the helper records that the Lean gate was skipped rather
-than promoting theorem claims.
+than supporting additional theorem promotion.
 
 ## Build map
 
@@ -98,16 +98,15 @@ scripts/                  Local reproducibility helpers
 
 ## Release discipline
 
-Before any exact claim is promoted to `Lean-proved`, update these surfaces together:
+Before any additional exact claim is promoted to `Lean-proved`, update these surfaces together:
 
 ```text
 docs/claim-status.md
 docs/theorem-ledger.md
 docs/paper-lean-notebook-crosswalk.md
 spec/claims.yaml
-spec/equations.yaml
 docs/build-status.md
 README.md
 ```
 
-The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in this v0 skeleton.
+The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.2.

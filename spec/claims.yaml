@@ -7,33 +7,50 @@ claims:
 
   - id: ST-03
     statement: "A(lambda) = [[0, -lambda], [-1, 0]]"
-    status: Computed here
+    status: Lean-proved
     lean_target: "Spacetime/TimeEvolutionMatrix.lean"
+    lean_declarations:
+      - timeEvolutionMatrix
     computational_artifact: "results/time_evolution_summary.json"
-    notes: "Lean scaffold present; promote only after lake build."
+    notes: "Promoted in v0.2 after lake build; SymPy artifact remains a computational companion."
 
   - id: ST-04
     statement: "trace(A)=0, det(A)=-lambda, charpoly(A)=x^2-lambda, A^2=lambda I"
-    status: Computed here
+    status: Lean-proved
     lean_target: "Spacetime/TimeEvolutionMatrix.lean"
+    lean_declarations:
+      - trace_zero
+      - det_eq_neg_lambda
+      - char_poly
+      - square_eq_lambda_identity
     computational_artifact: "results/regression_summary.json"
 
   - id: ST-05-POSITIVE
-    statement: "lambda > 0 corresponds to the hyperbolic algebraic branch"
-    status: Computed here
+    statement: "lambda > 0 has det(A)<0 and satisfies the hyperbolic algebraic branch marker"
+    status: Lean-proved
     lean_target: "Spacetime/SignVerdict.lean"
+    lean_declarations:
+      - positive_branch_det_negative
+      - positiveBranch_hyperbolicAlgebraic
     computational_artifact: "results/branch_summary.json"
+    notes: "SymPy also records the real split-root explainer artifact; the Lean promotion is the determinant/branch-marker fact."
 
   - id: ST-05-ZERO
     statement: "lambda = 0 corresponds to the parabolic / nilpotent branch"
-    status: Computed here
+    status: Lean-proved
     lean_target: "Spacetime/SignVerdict.lean"
+    lean_declarations:
+      - zero_branch_square_zero
+      - zeroBranch_parabolicAlgebraic
     computational_artifact: "results/branch_summary.json"
 
   - id: ST-05-NEGATIVE
-    statement: "lambda < 0 corresponds to the elliptic explainer branch"
-    status: Computed here
+    statement: "lambda < 0 has det(A)>0 and trace(A)=0, satisfying the elliptic algebraic branch marker"
+    status: Lean-proved
     lean_target: "Spacetime/SignVerdict.lean"
+    lean_declarations:
+      - negative_branch_det_positive
+      - negativeBranch_ellipticAlgebraic
     computational_artifact: "results/branch_summary.json"
 
   - id: PHYS-01
