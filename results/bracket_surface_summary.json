@@ -1,0 +1,17 @@
+{
+  "truth_tag": "Computed here",
+  "authority_note": "Computed companion for constant-curvature bracket-surface structure.",
+  "constant_curvature_rule": "[P_a, P_b] = lambda J_ab",
+  "symbolic_coefficients": {
+    "symbol": "Q_a_b",
+    "value": "lambda"
+  },
+  "hygiene_checks": {
+    "linear_in_lambda": "lam1 + lam2",
+    "zero_lambda": "0",
+    "index_stub": [
+      "a",
+      "b"
+    ]
+  }
+}

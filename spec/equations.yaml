@@ -59,7 +59,7 @@ equations:
     lean_declaration: ellMinus_splitQuadratic_zero
     artifact: "results/null_bridge_summary.json"
 
-  - id: EQ-LAMBDA-GENERAL
+  - id: EQ-LAMBDA-GENERAL-COMPUTED
     expression: "Lambda(d,lambda) = ((d - 1)(d - 2)/2) lambda"
     status: Computed here
     artifact: "results/lambda_sign_summary.json"
@@ -75,3 +75,47 @@ equations:
     status: Lean-proved
     lean_declaration: cosmologicalFromCurvature_four_positive
     artifact: "results/lambda_sign_summary.json"
+  - id: EQ-LAMBDA-GENERAL-LEAN
+    expression: "cosmologicalFromCurvature d lambda = ((d - 1)(d - 2)/2) lambda"
+    status: Lean-proved
+    lean_declaration: cosmologicalFromCurvature_general
+    artifact: "results/lambda_sign_summary.json"
+
+  - id: EQ-LAMBDA-NONNEG
+    expression: "if 3 <= d and 0 <= lambda then 0 <= cosmologicalFromCurvature d lambda"
+    status: Lean-proved
+    lean_declaration: cosmologicalFromCurvature_nonneg_of_nonneg
+    artifact: "results/lambda_sign_summary.json"
+  - id: EQ-LAMBDA-POSITIVE
+    expression: "if 3 <= d and 0 < lambda then 0 < cosmologicalFromCurvature d lambda"
+    status: Lean-proved
+    lean_declaration: cosmologicalFromCurvature_positive_of_positive
+    artifact: "results/lambda_sign_summary.json"
+
+  - id: EQ-BRACKET-SCALE
+    expression: "translationBracket a b (lam1 + lam2) has symbolic generator J_ab and coefficient lam1+lam2"
+    status: Lean-proved
+    lean_declaration: translationBracket_scale
+    artifact: "results/bracket_surface_summary.json"
+  - id: EQ-BRACKET-ZERO
+    expression: "translationBracket a b 0 = <0,J_ab>"
+    status: Lean-proved
+    lean_declaration: translationBracket_zero
+    artifact: "results/bracket_surface_summary.json"
+  - id: EQ-BRACKET-STABLE
+    expression: "translationBracket a b lam has fixed generator J_ab and coefficient lambda"
+    status: Lean-proved
+    lean_declaration: translationBracket_stable_structure
+    artifact: "results/bracket_surface_summary.json"
+
+  - id: EQ-SPLIT-CONE
+    expression: "splitCone(lam,v) := splitQuadratic(lam,v)=0"
+    status: Lean-proved
+    lean_declaration: splitCone
+    artifact: "results/split_cone_summary.json"
+
+  - id: EQ-SPLIT-CONE-SCALE
+    expression: "if splitCone lam v then splitCone lam (Vec2.scale r v) in the cone-packet"
+    status: Lean-proved
+    lean_declaration: splitCone_scale
+    artifact: "results/split_cone_summary.json"

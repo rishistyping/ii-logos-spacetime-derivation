@@ -6,7 +6,9 @@
     "sympy/spacetime_eigendirections.py",
     "sympy/spacetime_null_bridge.py",
     "sympy/spacetime_lambda_sign.py",
+    "sympy/spacetime_split_cone.py",
     "sympy/spacetime_flow_scaling.py",
+    "sympy/spacetime_bracket_surface.py",
     "sympy/spacetime_invariant_form.py",
     "sympy/spacetime_regression_check.py",
     "sympy/spacetime_visualize.py"
@@ -74,6 +76,20 @@
       "truth_tag": "Computed here",
       "paper_step": "Steps 5-6",
       "authority_note": "Regression summary over the committed computational surfaces."
+    },
+    {
+      "path": "results/split_cone_summary.json",
+      "producer": "sympy/spacetime_split_cone.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 6",
+      "authority_note": "Computed companion for algebraic split-cone closure; not a physical light-cone proof."
+    },
+    {
+      "path": "results/bracket_surface_summary.json",
+      "producer": "sympy/spacetime_bracket_surface.py",
+      "truth_tag": "Computed here",
+      "paper_step": "Step 2",
+      "authority_note": "Computed companion for constant-curvature bracket-surface hygiene."
     },
     {
       "path": "viz/hyperbolic_flow.png",

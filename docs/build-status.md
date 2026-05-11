@@ -15,6 +15,8 @@ This file records validated status. Future execution plans live in
 - Python matrix oracle: passing
 - Python eigendirection checks: passing
 - Python split-null bridge checks: passing
+- Python split-cone packet checks: passing
+- Python bracket-surface hygiene checks: passing
 - Python Lambda sign checks: passing
 - Python branch-flow scaling checks: passing
 - Python invariant-form checks: passing
@@ -24,7 +26,7 @@ This file records validated status. Future execution plans live in
 - Truth-surface consistency check: passing
 - Lean proof-hole scan: passing; no `sorry` or `admit` in `Spacetime.lean`, `SpacetimeFull.lean`, or `Spacetime/*.lean`
 - Lean build: passing via `lake build`
-- Truth-surface promotion: exact matrix spine, algebraic branch markers, algebraic eigendirections, algebraic split-nullness, and four-dimensional Lambda sign arithmetic promoted to `Lean-proved`; physical bridge claims remain `Interpretation`.
+- Truth-surface promotion: exact matrix spine, algebraic branch markers, algebraic eigendirections, algebraic split-nullness, ST-09 split-cone packet, and ST-10/ST-11 arithmetic/hygiene bridges promoted to `Lean-proved`; physical bridge claims remain `Interpretation`.
 
 ## Commands
 

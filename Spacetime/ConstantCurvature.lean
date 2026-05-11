@@ -35,4 +35,22 @@ theorem translationBracket_generator (a b : Nat) (lam : CurvatureSign) :
     (translationBracket a b lam).gen = Generator.J a b := by
   rfl
 
+/-- Bracket coefficient scales linearly in the curvature parameter. -/
+theorem translationBracket_scale (a b : Nat) (lam₁ lam₂ : CurvatureSign) :
+    translationBracket a b (lam₁ + lam₂) =
+      ⟨(translationBracket a b lam₁).coeff + (translationBracket a b lam₂).coeff,
+        (translationBracket a b (lam₁ + lam₂)).gen⟩ := by
+  rfl
+
+/-- Zero-curvature translation bracket still stays in the symbolic `J_ab` family. -/
+theorem translationBracket_zero (a b : Nat) :
+    translationBracket a b 0 = ⟨0, Generator.J a b⟩ := by
+  simp [translationBracket]
+
+/-- Generator type and branch are fixed once indices are fixed. -/
+theorem translationBracket_stable_structure (a b : Nat) (lam : CurvatureSign) :
+    (translationBracket a b lam).gen = Generator.J a b ∧
+      (translationBracket a b lam).coeff = lam := by
+  constructor <;> simp [translationBracket]
+
 end Spacetime

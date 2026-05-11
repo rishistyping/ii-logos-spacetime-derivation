@@ -133,3 +133,46 @@ Target surfaces:
 Status: `Lean-proved` for the four-dimensional arithmetic bridge only.
 
 Observed cosmological interpretation and the full shared-sign thesis remain `Interpretation`.
+
+## ST-09 — Split-cone packet
+
+Lean file: `Spacetime/NullConeSplit.lean`
+
+Target surfaces:
+
+- `splitCone`
+- `splitCone_scale`
+- `splitCone_ellPlus_zero`
+- `splitCone_ellMinus_zero`
+
+Status: `Lean-proved` for algebraic split-cone closure under scaling and `ellPlus`/`ellMinus` membership.
+
+## ST-10 — General Lambda sign bridge
+
+Lean file: `Spacetime/SignatureBridge.lean`
+
+Target surfaces:
+
+- `cosmologicalFromCurvature`
+- `cosmologicalFromCurvature_general`
+- `cosmologicalFromCurvature_nonneg_of_nonneg`
+- `cosmologicalFromCurvature_positive_of_positive`
+
+Status: `Lean-proved` for the explicit-assumption packet:
+`cosmologicalFromCurvature_general`, `cosmologicalFromCurvature_nonneg_of_nonneg`,
+`cosmologicalFromCurvature_positive_of_positive`. No physical sign thesis is promoted.
+
+## ST-11 — Bracket-surface strengthening
+
+Lean file: `Spacetime/ConstantCurvature.lean`
+
+Target surfaces:
+
+- `translationBracket`
+- `translationBracket_coeff`
+- `translationBracket_generator`
+- `translationBracket_scale`
+
+Status: `Lean-proved` for coefficient/generator hygiene lemmas:
+`translationBracket_scale`, `translationBracket_zero`, `translationBracket_stable_structure`.
+No full Lie-algebra exhaustiveness claim is introduced.

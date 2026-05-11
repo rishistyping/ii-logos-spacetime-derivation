@@ -95,6 +95,40 @@ claims:
     computational_artifact: "results/lambda_sign_summary.json"
     notes: "Promoted in v0.5 as an arithmetic bridge only; observational or physical cosmological readings remain outside this claim."
 
+  - id: ST-09-SPLIT-CONE
+    statement: "For nonnegative lambda, splitCone(lam,v) is defined by splitQuadratic(lam,v)=0 and is closed under scaling; ellPlus and ellMinus lie on it."
+    status: Lean-proved
+    lean_target: "Spacetime/NullConeSplit.lean"
+    lean_declarations:
+      - splitCone
+      - splitCone_scale
+      - splitCone_ellPlus_zero
+      - splitCone_ellMinus_zero
+    computational_artifact: "results/split_cone_summary.json"
+    notes: "Algebraic cone-closure packet for ST-09. Physical interpretations remain interpretation."
+
+  - id: ST-10-LAMBDA-GENERAL-SIGN
+    statement: "In dimensions d>=3, `cosmologicalFromCurvature d lambda = ((d-1)(d-2)/2) lambda`; with 0<=lambda gives nonnegative Lambda and 0<lambda gives positive Lambda."
+    status: Lean-proved
+    lean_target: "Spacetime/SignatureBridge.lean"
+    lean_declarations:
+      - cosmologicalFromCurvature_general
+      - cosmologicalFromCurvature_nonneg_of_nonneg
+      - cosmologicalFromCurvature_positive_of_positive
+    computational_artifact: "results/lambda_sign_summary.json"
+    notes: "Safe assumption packet with explicit dimension/sign conditions."
+
+  - id: ST-11-BRACKET-SURFACE
+    statement: "Constant-curvature bracket packet remains symbolic but is strengthened with coefficient and generator hygiene lemmas for explicit scaffold checks."
+    status: Lean-proved
+    lean_target: "Spacetime/ConstantCurvature.lean"
+    lean_declarations:
+      - translationBracket_scale
+      - translationBracket_zero
+      - translationBracket_stable_structure
+    computational_artifact: "results/bracket_surface_summary.json"
+    notes: "No Lie-algebra exhaustiveness claim is introduced."
+
   - id: PHYS-01
     statement: "t > 0, c > 0, and Lambda > 0 share the same sign"
     status: Interpretation

@@ -16,7 +16,9 @@ echo "== Python exact and artifact checks =="
 "${PY[@]}" sympy/spacetime_eigendirections.py
 "${PY[@]}" sympy/spacetime_null_bridge.py
 "${PY[@]}" sympy/spacetime_lambda_sign.py
+"${PY[@]}" sympy/spacetime_split_cone.py
 "${PY[@]}" sympy/spacetime_flow_scaling.py
+"${PY[@]}" sympy/spacetime_bracket_surface.py
 "${PY[@]}" sympy/spacetime_invariant_form.py
 "${PY[@]}" sympy/spacetime_regression_check.py
 "${PY[@]}" sympy/spacetime_visualize.py

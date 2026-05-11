@@ -53,7 +53,7 @@ Operational control for this build lives in `ops/long-horizon/`.
 
 ## v0.6 — Proof-surface audit and bridge taxonomy
 
-Status: next execution target.
+Status: complete.
 
 The next conservative target is a planning and truth-surface audit, not an
 immediate physical promotion:
@@ -66,7 +66,7 @@ The detailed execution control plane lives in `ops/long-horizon/`.
 
 ## v0.7 — Algebraic split-cone packet
 
-Status: planned.
+Status: complete.
 
 - Add an algebraic cone predicate around `splitQuadratic`.
 - Prove only closure and equivalence facts that are internal to the existing
@@ -76,7 +76,7 @@ Status: planned.
 
 ## v0.8 — Arithmetic and bracket packets
 
-Status: planned.
+Status: complete.
 
 - Strengthen safe general-dimensional Lambda arithmetic under explicit
   assumptions.
@@ -86,7 +86,7 @@ Status: planned.
 
 ## v0.9 — Public sync pass
 
-Status: planned.
+Status: complete.
 
 - Align README, public preview, notebook walkthrough, generated visuals, result
   manifest, and truth surfaces.

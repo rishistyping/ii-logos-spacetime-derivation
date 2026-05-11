@@ -37,6 +37,9 @@ This board is the canonical human-readable summary of what is proved, computed, 
 | Wick-rotation / Lorentzian signature bridge as a physical reading | Interpretation | `docs/reader-guide.md`, `docs/proof-visuals.md` |
 | General `Λ = 1/2(d-1)(d-2)λ` relation | Computed here | `sympy/spacetime_lambda_sign.py`, `results/lambda_sign_summary.json` |
 | In four spacetime dimensions, `Λ=3λ`; if `λ>0`, then `Λ>0` | Lean-proved | `Spacetime/SignatureBridge.lean::cosmologicalFromCurvature_four`, `cosmologicalFromCurvature_four_positive`; `sympy/spacetime_lambda_sign.py`, `results/lambda_sign_summary.json` |
+| `ST-09-SPLIT-CONE`: cone-closure packet for `Q(k,p)=k²-λp²` is `Lean-proved` on the algebraic split form | Lean-proved | `Spacetime/NullConeSplit.lean`, `results/split_cone_summary.json` |
+| `ST-10-LAMBDA-GENERAL-SIGN`: safe general-dimensional `Λ` arithmetic bridge with explicit assumptions is `Lean-proved` | Lean-proved | `Spacetime/SignatureBridge.lean` |
+| `ST-11-BRACKET-SURFACE`: constant-curvature bracket-surface hygiene and algebraic split rules are `Lean-proved` | Lean-proved | `Spacetime/ConstantCurvature.lean`, `results/bracket_surface_summary.json` |
 | Eigenspaces are null/light-cone directions | Interpretation | Step 6 of the paper; bridge theorem pending |
 | `t>0`, `c>0`, and `Λ>0` share the same sign | Interpretation | paper conclusion; formal bridges pending |
 | Full arrow-of-time conclusion | Interpretation | paper conclusion; formal bridges pending |

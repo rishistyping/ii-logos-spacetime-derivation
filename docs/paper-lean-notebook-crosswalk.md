@@ -2,7 +2,7 @@
 
 | Paper anchor | Lean target | SymPy artifact | Wolfram / visual surface | Status |
 | --- | --- | --- | --- | --- |
-| Step 2: translations fail to commute by curvature | `Spacetime/ConstantCurvature.lean` | future bracket artifact | branch funnel panel | Interpretation / scaffold |
+| Step 2: translations fail to commute by curvature | `translationBracket`, `translationBracket_coeff`, `translationBracket_generator`, `translationBracket_scale`, `translationBracket_zero`, `translationBracket_stable_structure` | `results/bracket_surface_summary.json` | branch funnel panel | Lean-proved for algebraic hygiene |
 | Step 4: general curvature-to-cosmological-constant relation | `Spacetime/SignatureBridge.lean` | `results/lambda_sign_summary.json` | signature bridge panel | Computed here |
 | Step 4: four-dimensional `Λ=3λ` and positive-sign arithmetic | `cosmologicalFromCurvature_four`, `cosmologicalFromCurvature_four_positive` | `results/lambda_sign_summary.json` | signature bridge panel | Lean-proved for arithmetic only |
 | Step 5: time-evolution matrix on `(K_i,P_i)` plane | `timeEvolutionMatrix` | `results/matrix_oracle_summary.json` | `notebook_preview_time_matrix.svg` target | Lean-proved |
@@ -11,6 +11,8 @@
 | Three sign regimes | `positiveBranch_hyperbolicAlgebraic`, `zeroBranch_parabolicAlgebraic`, `negativeBranch_ellipticAlgebraic` | `results/branch_summary.json` | `viz/hyperbolic_flow.png`, `viz/parabolic_flow.png`, `viz/elliptic_flow.png` | Lean-proved for algebraic markers only |
 | Step 6: algebraic eigendirections `ℓ+`, `ℓ-` | `ellPlus_eigen`, `ellMinus_eigen`, `ellPlus_ne_ellMinus` | `results/eigendirection_summary.json` | future eigenflow preview | Lean-proved for algebraic eigendirections only |
 | Step 6: split quadratic vanishes on `ℓ+`, `ℓ-` | `ellPlus_splitQuadratic_zero`, `ellMinus_splitQuadratic_zero` | `results/null_bridge_summary.json`, `results/invariant_metric_summary.json` | invariant-form preview | Lean-proved for algebraic split form only |
+| Step 6: split-cone packet around `Q(k,p)=k²-λp²` | `splitCone`, `splitCone_scale`, `splitCone_ellPlus_zero`, `splitCone_ellMinus_zero` | `results/split_cone_summary.json` | cone packet status note | Lean-proved for algebraic cone closure |
+| Step 4: explicit-assumption Lambda sign bridge | `cosmologicalFromCurvature_general`, `cosmologicalFromCurvature_nonneg_of_nonneg`, `cosmologicalFromCurvature_positive_of_positive` | `results/lambda_sign_summary.json` | general bridge arithmetic | Lean-proved for arithmetic conditions |
 | Step 6: matrix flow scaling on branches | future Lean theorem family | `results/time_flow_summary.json` | flow preview | Computed here |
 | Step 6: eigendirections are light rays / horizons | future null-vector bridge theorem family | not asserted as computation | conclusion panel | Interpretation |
 | `t>0`, `c>0`, `Λ>0` shared sign thesis | future bridge theorem family | not asserted as computation | conclusion panel | Interpretation |

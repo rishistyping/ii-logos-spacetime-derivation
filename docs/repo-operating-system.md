@@ -50,10 +50,10 @@ under `ops/long-horizon/`, which is the repository's ExecPlan surface:
 
 ## Current v0.5 live frontier
 
-The current frontier is not a broad physical proof. It is the narrow matrix spine:
+The current frontier is not a broad physical proof. It is the narrow matrix and bridge spine:
 
 ```text
-A(λ), trace, determinant, characteristic polynomial, square, sign-regime classification, algebraic eigendirections, algebraic split-nullness, and four-dimensional Lambda sign arithmetic.
+A(λ), trace, determinant, characteristic polynomial, square, sign-regime classification, algebraic eigendirections, algebraic split-nullness, ST-09 split-cone closure, ST-10 general Lambda sign arithmetic, ST-11 bracket-surface hygiene, and four-dimensional Lambda sign arithmetic.
 ```
 
 The final physical arrow-of-time sign thesis remains interpretation until bridge theorems are separately encoded.

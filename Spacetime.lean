@@ -5,6 +5,7 @@ import Spacetime.TimeEvolutionMatrix
 import Spacetime.SignVerdict
 import Spacetime.EigenDirections
 import Spacetime.NullBridge
+import Spacetime.NullConeSplit
 
 /-!
 # Spacetime

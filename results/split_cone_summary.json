@@ -1,0 +1,31 @@
+{
+  "truth_tag": "Computed here",
+  "authority_note": "Computed companion for algebraic split-cone closure; does not promote physical light-cone interpretation.",
+  "parameterization": {
+    "lambda": "s**2",
+    "assumption": "s > 0"
+  },
+  "cone_predicate": "splitCone(lam,v) := splitQuadratic(lam,v)=0",
+  "split_quadratic": {
+    "expression": "Q(k,p) = k**2 - lam*p**2",
+    "lambda_substitution": "lam = s**2"
+  },
+  "ell_plus": {
+    "coordinates_K_P": [
+      "-s",
+      "1"
+    ],
+    "Q_value": "0"
+  },
+  "ell_minus": {
+    "coordinates_K_P": [
+      "s",
+      "1"
+    ],
+    "Q_value": "0"
+  },
+  "homogeneity": {
+    "identity": "Q(a*v) = a**2*Q(v)",
+    "residual": "0"
+  }
+}
