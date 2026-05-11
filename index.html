@@ -744,6 +744,17 @@ section pre{
 </aside>
 
 <script>
+window._katexOpts = window._katexOpts || {
+  delimiters: [
+    { left: '\\[', right: '\\]', display: true },
+    { left: '$$', right: '$$', display: true },
+    { left: '\\(', right: '\\)', display: false },
+    { left: '$', right: '$', display: false }
+  ],
+  throwOnError: false,
+  errorColor: '#f44336'
+};
+
 // ----- Theme -----
 (function(){
   const root = document.documentElement;
@@ -1018,16 +1029,28 @@ function parseSse(response){
 
 async function* chatViaApi(messages, opts = {}){
   if (!CHAT_API_URL) throw new Error('cloud-disabled');
-  const r = await fetch(CHAT_API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: CLOUD_MODEL,
-      messages,
-      temperature: opts.temperature ?? 0.4,
-      max_tokens: opts.max_tokens ?? 2048
-    })
-  });
+  const ctrl = new AbortController();
+  const timeoutId = setTimeout(() => ctrl.abort(), 25000);
+  let r;
+  try {
+    r = await fetch(CHAT_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: CLOUD_MODEL,
+        messages,
+        temperature: opts.temperature ?? 0.4,
+        max_tokens: opts.max_tokens ?? 2048
+      }),
+      signal: ctrl.signal
+    });
+  } catch (err){
+    clearTimeout(timeoutId);
+    if (err && err.name === 'AbortError') throw new Error('cloud-timeout');
+    throw err;
+  }
+  clearTimeout(timeoutId);
+
   if (!r.ok){
     const detail = await r.text().catch(() => '');
     throw new Error('cloud-' + r.status + (detail ? ': ' + detail.slice(0, 160) : ''));
@@ -1117,6 +1140,7 @@ async function fillFromStream(out, gen){
 }
 
 async function runReview(){
+  if (busy) return;
   busy = true;
   send.disabled = true;
   const out = appendMessage('assistant', 'Thinking…');
