@@ -1,6 +1,6 @@
 # A Brief Derivation of Spacetime
 
-[![Lean](https://img.shields.io/badge/Lean-v0.2%20proved-blue)](https://lean-lang.org/)
+[![Lean](https://img.shields.io/badge/Lean-v0.3%20proved-blue)](https://lean-lang.org/)
 [![SymPy](https://img.shields.io/badge/SymPy-exact%20checks-green)](https://www.sympy.org/)
 [![Wolfram](https://img.shields.io/badge/Wolfram-notebook%20plan-orange)](https://www.wolfram.com/wolfram-engine/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC--BY--4.0-15803d)](LICENSE)
@@ -11,7 +11,7 @@ Lean is the intended proof authority for exact algebraic and matrix identities. 
 
 ## Current status
 
-This is a **v0.2 verification skeleton**. The exact matrix spine and algebraic branch markers have been promoted to `Lean-proved` after `lake build`; physical interpretations remain `Interpretation`.
+This is a **v0.3 verification skeleton**. The exact matrix spine, algebraic branch markers, and positive-branch algebraic eigendirections have been promoted to `Lean-proved` after `lake build`; physical interpretations remain `Interpretation`.
 
 The current `Lean-proved` matrix spine is:
 
@@ -32,6 +32,15 @@ The current branch surface is:
 | `λ > 0` | `det(A) < 0` and the hyperbolic algebraic marker holds | SymPy records real split roots; hyperbolic flow |
 | `λ = 0` | `A² = 0` | parabolic / nilpotent limit |
 | `λ < 0` | `det(A) > 0`, `trace(A)=0`, and the elliptic algebraic marker holds | elliptic flow |
+
+The current `Lean-proved` eigendirection bridge is algebraic only:
+
+```text
+ℓ+ = (-√λ, 1),  A(λ)ℓ+ =  √λ ℓ+    for λ ≥ 0
+ℓ- = ( √λ, 1),  A(λ)ℓ- = -√λ ℓ-    for λ ≥ 0
+```
+
+For `λ > 0`, Lean also proves `ℓ+ ≠ ℓ-`. The claim that these eigendirections are null/light-cone directions remains `Interpretation`.
 
 ## Choose your path
 
@@ -62,9 +71,9 @@ uv sync
 bash scripts/check_all.sh
 ```
 
-The combined helper runs the SymPy exact checks, regenerates the JSON and
-visual artifacts, scans Lean files for proof holes, and runs `lake build` when
-Lean/Lake is installed.
+The combined helper runs the SymPy exact/eigendirection checks, regenerates the
+JSON and visual artifacts, scans Lean files for proof holes, and runs
+`lake build` when Lean/Lake is installed.
 
 If you are not using `uv`, install the core Python dependencies from
 `requirements.txt` and run the same helper.
@@ -105,8 +114,9 @@ docs/claim-status.md
 docs/theorem-ledger.md
 docs/paper-lean-notebook-crosswalk.md
 spec/claims.yaml
+spec/equations.yaml
 docs/build-status.md
 README.md
 ```
 
-The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.2.
+The final physical sentence — that `t > 0`, `c > 0`, and `Λ > 0` share the same sign — remains `Interpretation` in v0.3.

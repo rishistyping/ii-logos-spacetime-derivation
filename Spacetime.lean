@@ -3,6 +3,7 @@ import Spacetime.ConstantCurvature
 import Spacetime.SignatureBridge
 import Spacetime.TimeEvolutionMatrix
 import Spacetime.SignVerdict
+import Spacetime.EigenDirections
 
 /-!
 # Spacetime

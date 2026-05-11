@@ -8,4 +8,6 @@
 | `trace(A)=0`, `det(A)=-λ`, `charpoly=x²-λ` | `trace_zero`, `det_eq_neg_lambda`, `char_poly` | `results/regression_summary.json` | matrix panel | Lean-proved |
 | `A(λ)^2 = λI` | `square_eq_lambda_identity` | `results/time_evolution_summary.json` | matrix panel | Lean-proved |
 | Three sign regimes | `positiveBranch_hyperbolicAlgebraic`, `zeroBranch_parabolicAlgebraic`, `negativeBranch_ellipticAlgebraic` | `results/branch_summary.json` | `viz/hyperbolic_flow.png`, `viz/parabolic_flow.png`, `viz/elliptic_flow.png` | Lean-proved for algebraic markers only |
+| Step 6: algebraic eigendirections `ℓ+`, `ℓ-` | `ellPlus_eigen`, `ellMinus_eigen`, `ellPlus_ne_ellMinus` | `results/eigendirection_summary.json` | future eigenflow preview | Lean-proved for algebraic eigendirections only |
+| Step 6: eigendirections are light rays / horizons | future null-vector bridge theorem family | not asserted as computation | conclusion panel | Interpretation |
 | `t>0`, `c>0`, `Λ>0` shared sign thesis | future bridge theorem family | not asserted as computation | conclusion panel | Interpretation |

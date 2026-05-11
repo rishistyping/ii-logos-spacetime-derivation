@@ -13,6 +13,7 @@ fi
 echo "== Python exact checks =="
 "${PY[@]}" sympy/spacetime_exact_checks.py
 "${PY[@]}" sympy/spacetime_matrix_oracle.py
+"${PY[@]}" sympy/spacetime_eigendirections.py
 "${PY[@]}" sympy/spacetime_regression_check.py
 "${PY[@]}" sympy/spacetime_visualize.py
 

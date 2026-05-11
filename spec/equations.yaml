@@ -1,28 +1,45 @@
 equations:
   - id: EQ-A
     expression: "A(lambda) = [[0, -lambda], [-1, 0]]"
-    status: Computed here
+    status: Lean-proved
+    lean_declaration: timeEvolutionMatrix
     artifact: "results/time_evolution_summary.json"
 
   - id: EQ-TRACE
     expression: "trace(A(lambda)) = 0"
-    status: Computed here
+    status: Lean-proved
+    lean_declaration: trace_zero
     artifact: "results/regression_summary.json"
 
   - id: EQ-DET
     expression: "det(A(lambda)) = -lambda"
-    status: Computed here
+    status: Lean-proved
+    lean_declaration: det_eq_neg_lambda
     artifact: "results/regression_summary.json"
 
   - id: EQ-CHARPOLY
     expression: "charpoly_A(x) = x^2 - lambda"
-    status: Computed here
+    status: Lean-proved
+    lean_declaration: char_poly
     artifact: "results/regression_summary.json"
 
   - id: EQ-SQUARE
     expression: "A(lambda)^2 = lambda I"
-    status: Computed here
+    status: Lean-proved
+    lean_declaration: square_eq_lambda_identity
     artifact: "results/regression_summary.json"
+
+  - id: EQ-EIGEN-PLUS
+    expression: "A(lambda) ellPlus(lambda) = sqrt(lambda) ellPlus(lambda), for lambda >= 0"
+    status: Lean-proved
+    lean_declaration: ellPlus_eigen
+    artifact: "results/eigendirection_summary.json"
+
+  - id: EQ-EIGEN-MINUS
+    expression: "A(lambda) ellMinus(lambda) = -sqrt(lambda) ellMinus(lambda), for lambda >= 0"
+    status: Lean-proved
+    lean_declaration: ellMinus_eigen
+    artifact: "results/eigendirection_summary.json"
 
   - id: EQ-LAMBDA
     expression: "Lambda = ((d - 1)(d - 2)/2) lambda; in d=4, Lambda = 3 lambda"

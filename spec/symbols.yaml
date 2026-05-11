@@ -10,6 +10,14 @@ symbols:
   A:
     meaning: "time-evolution matrix on each (K_i, P_i) plane"
     definition: "[[0, -lambda], [-1, 0]]"
+  ellPlus:
+    unicode: "ℓ+"
+    meaning: "positive-branch algebraic eigendirection with coordinates (-sqrt(lambda), 1)"
+  ellMinus:
+    unicode: "ℓ-"
+    meaning: "positive-branch algebraic eigendirection with coordinates (sqrt(lambda), 1)"
+  s:
+    meaning: "positive square-root parameter used in SymPy checks, with lambda = s**2"
   K:
     meaning: "boost-like generator coordinate in the 2D plane"
   P:

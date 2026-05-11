@@ -21,7 +21,7 @@ Status: complete.
 
 ## v0.3 — Eigen-direction bridge
 
-Status: next.
+Status: complete.
 
 - Add explicit `ℓ+` and `ℓ-` eigenvector/eigendirection statements.
 - Add SymPy artifacts for eigenvectors.
@@ -29,6 +29,8 @@ Status: next.
 - Keep geometric and physical readings separate from algebraic facts.
 
 ## v0.4 — Public reader preview
+
+Status: next.
 
 - Improve public reader experience with a generated notebook preview or lightweight docs page.
 - Do not add an interactive web companion yet.

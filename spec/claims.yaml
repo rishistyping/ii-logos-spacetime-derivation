@@ -53,6 +53,23 @@ claims:
       - negativeBranch_ellipticAlgebraic
     computational_artifact: "results/branch_summary.json"
 
+  - id: ST-06-EIGENDIRECTIONS
+    statement: "For lambda >= 0, ellPlus=(-sqrt(lambda),1) and ellMinus=(sqrt(lambda),1) are nonzero eigenvectors of A(lambda) with eigenvalues sqrt(lambda) and -sqrt(lambda); for lambda > 0 they are distinct."
+    status: Lean-proved
+    lean_target: "Spacetime/EigenDirections.lean"
+    lean_declarations:
+      - Vec2
+      - Mat2.mulVec
+      - ellPlus
+      - ellMinus
+      - ellPlus_nonzero
+      - ellMinus_nonzero
+      - ellPlus_eigen
+      - ellMinus_eigen
+      - ellPlus_ne_ellMinus
+    computational_artifact: "results/eigendirection_summary.json"
+    notes: "Promoted in v0.3 as an algebraic eigendirection bridge only; null-vector and light-cone readings remain interpretation."
+
   - id: PHYS-01
     statement: "t > 0, c > 0, and Lambda > 0 share the same sign"
     status: Interpretation

@@ -3,6 +3,7 @@
   "generated_by": [
     "sympy/spacetime_exact_checks.py",
     "sympy/spacetime_matrix_oracle.py",
+    "sympy/spacetime_eigendirections.py",
     "sympy/spacetime_regression_check.py",
     "sympy/spacetime_visualize.py"
   ],
@@ -10,6 +11,7 @@
     "results/time_evolution_summary.json",
     "results/matrix_oracle_summary.json",
     "results/branch_summary.json",
+    "results/eigendirection_summary.json",
     "results/regression_summary.json",
     "viz/hyperbolic_flow.png",
     "viz/parabolic_flow.png",

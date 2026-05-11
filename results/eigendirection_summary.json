@@ -1,0 +1,55 @@
+{
+  "parameterization": {
+    "lambda": "s**2",
+    "assumption": "s > 0"
+  },
+  "matrix_A": [
+    [
+      "0",
+      "-s**2"
+    ],
+    [
+      "-1",
+      "0"
+    ]
+  ],
+  "ell_plus": {
+    "coordinates_K_P": [
+      "-s",
+      "1"
+    ],
+    "eigenvalue": "s",
+    "residual": [
+      [
+        "0"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "nonzero_witness": "P coordinate is 1"
+  },
+  "ell_minus": {
+    "coordinates_K_P": [
+      "s",
+      "1"
+    ],
+    "eigenvalue": "-s",
+    "residual": [
+      [
+        "0"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "nonzero_witness": "P coordinate is 1"
+  },
+  "distinct_positive_branch": {
+    "difference_ell_plus_minus_ell_minus": [
+      "-2*s",
+      "0"
+    ],
+    "reason": "s > 0 implies -2*s != 0"
+  }
+}

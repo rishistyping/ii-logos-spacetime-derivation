@@ -18,5 +18,6 @@ jobs:
         run: |
           uv run python sympy/spacetime_exact_checks.py
           uv run python sympy/spacetime_matrix_oracle.py
+          uv run python sympy/spacetime_eigendirections.py
           uv run python sympy/spacetime_regression_check.py
           uv run python sympy/spacetime_visualize.py

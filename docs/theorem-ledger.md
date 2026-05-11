@@ -76,3 +76,24 @@ Target surfaces:
 - `negativeBranch_ellipticAlgebraic`
 
 Status: `Lean-proved` for algebraic branch markers only. Physical sign thesis remains `Interpretation`.
+
+## ST-06 — Algebraic eigendirections
+
+Lean file: `Spacetime/EigenDirections.lean`
+
+Target surfaces:
+
+- `Vec2`
+- `Vec2.zero`
+- `Vec2.scale`
+- `Vec2.ext`
+- `Mat2.mulVec`
+- `ellPlus`
+- `ellMinus`
+- `ellPlus_nonzero`
+- `ellMinus_nonzero`
+- `ellPlus_eigen`
+- `ellMinus_eigen`
+- `ellPlus_ne_ellMinus`
+
+Status: `Lean-proved` for algebraic eigenvector/eigendirection facts only. Null-vector, light-cone, redshift, horizon, and arrow-of-time readings remain `Interpretation`.
