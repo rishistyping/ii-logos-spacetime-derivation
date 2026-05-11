@@ -6,6 +6,7 @@ The sign is structural. The magnitude is empirical. The bridge is tracked claim 
   <a href="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/lean.yml"><img src="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/lean.yml/badge.svg" alt="Lean CI" /></a>
   <a href="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/python-checks.yml"><img src="https://github.com/rishistyping/ii-logos-spacetime-derivation/actions/workflows/python-checks.yml/badge.svg" alt="Python checks" /></a>
   <a href="paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf"><img src="https://img.shields.io/badge/paper-PDF-334155" alt="Paper PDF" /></a>
+  <a href="./index.html"><img src="https://img.shields.io/badge/site-Companion%20web-6a4fb3" alt="Companion web page" /></a>
   <a href="docs/notebooks.md"><img src="https://img.shields.io/badge/notebook-guide-0f766e" alt="Notebook guide" /></a>
   <a href="docs/claim-status.md"><img src="https://img.shields.io/badge/claims-v1.0%20truth%20surface-15803d" alt="Claim status" /></a>
   <a href="docs/proof-visuals.md"><img src="https://img.shields.io/badge/visuals-LOGOS%20style-b88a2e" alt="Proof visuals" /></a>
@@ -40,7 +41,7 @@ Paper -> Public Story -> Claim Boundary -> Lean + SymPy Evidence
 
 ## Public Navigation
 
-- Read first: [`docs/public-reader-preview.md`](docs/public-reader-preview.md)
+- Read first: [`index.html`](./index.html) then [`docs/public-reader-preview.md`](docs/public-reader-preview.md)
 - Check boundaries: [`docs/claim-status.md`](docs/claim-status.md)
 - Validate tooling and checks: [`docs/build-status.md`](docs/build-status.md)
 - Deep map: [`docs/proof-visuals.md`](docs/proof-visuals.md)

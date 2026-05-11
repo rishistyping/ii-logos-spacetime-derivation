@@ -1,0 +1,95 @@
+A Brief Derivation of Spacetime
+Emad Mostaque — May 4, 2026
+
+The problem
+------------
+
+Why does time have a direction that space does not?
+
+The arrow of time is one of the fundamental open problems in physics. Thermodynamics
+traces it to initial conditions. Cosmology traces it to a boundary condition.
+Quantum mechanics traces it to measurement. Each view adds structure beyond the
+equations to break the symmetry.
+
+This paper asks whether the observed directional structure can be read as one algebra
+in two signatures. Space is positive: every squared distance is a sum of squares.
+Time is also positive: t > 0, c > 0, Λ > 0. The claim is that this comes from a
+single spatial structure and a sign preserved through a signature change.
+
+
+Six steps from dot product to spacetime
+--------------------------------------
+
+Step 1. The metric.
+Space carries a dot product
+
+<x, y> = x1 y1 + x2 y2 + ... + xd yd,
+
+with the Euclidean metric δij. All distances are positive, and no direction is
+singled out by construction.
+
+Step 2. Translations.
+The symmetries are rotations Jab and translations Pa. On flat space, translations
+commute:
+
+Pa Pb = Pb Pa.
+
+On a curved surface they do not. Walking in different orders around a loop leaves a
+different offset. The non-commutativity is captured by
+
+[Pa, Pb] = λ Jab.
+
+The sign of λ classifies the maximally symmetric branch:
+
+λ > 0: sphere,
+λ = 0: flat,
+λ < 0: hyperbolic.
+
+Step 3. Finiteness.
+The metric δij determines a volume form on each branch. The sphere Sd is compact
+and has finite total volume. Rd and Hd are non-compact with infinite volume. The
+argument presented takes the compact sphere branch as the finite spatial starting
+point.
+
+Step 4. Time.
+The sphere Sd sits in ℝd+1 as x1^2+...+x d+1^2 = R^2, with isometry algebra
+so(d+1). Wick rotating one coordinate x d+1 -> i x0 gives
+the hyperboloid x1^2+...+xd^2−x0^2 = R^2 and algebra so(d,1). Two signatures for
+the extra direction share the same spatial so(d).
+
+The cosmological constant is
+
+Λ = 1/2 (d−1)(d−2) λ
+
+and in d = 4 this becomes Λ = 3λ.
+
+Step 5. The matrix.
+On each (Ki, Pi) plane, time evolution is the linear action of:
+
+A(λ) = [[0, −λ],
+        [−1, 0]].
+
+For λ > 0 the eigenvalues are ±√λ and eigenvectors are
+
+l+ = (−√λ, 1),  A(λ) l+ = +√λ l+
+l− = (+√λ, 1),  A(λ) l− = −√λ l−.
+
+The flow is
+
+exp(t A) = cosh(√λ t) I + (sinh(√λ t)/√λ) A,
+
+hyperbolic on λ > 0, parabolic on λ = 0, and rotation-like on λ < 0.
+
+Step 6. The sign.
+A flow that preserves spacetime length can rescale a vector by s ≠ 1 only for a
+null (light-like) vector; otherwise length magnitude changes by s². The eigendirections
+l+ and l− are algebraic null-like directions in the signature-changed picture.
+
+One eigenvalue is positive and one negative: +√λ and −√λ. Their signs are read as
+time-oriented behavior and are the source of the expansion/redshift narrative in the
+paper’s interpretation layer.
+
+The paper’s physical arrow-of-time reading is explicitly identified as interpretive,
+with the boundary and claim surfaces tracking where algebra ends and interpretation
+begins.
+

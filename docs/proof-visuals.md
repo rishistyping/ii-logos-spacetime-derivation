@@ -32,6 +32,7 @@ docs/assets/render_readme_assets.py
 - `docs/assets/logos-spacetime-hero.png`
 - `docs/assets/verification-story.png`
 - `docs/assets/bridge-decomposition-funnel.png`
+- `../index.html` (public companion and chat entrypoint)
 - `viz/hyperbolic_flow.png`
 - `viz/parabolic_flow.png`
 - `viz/elliptic_flow.png`

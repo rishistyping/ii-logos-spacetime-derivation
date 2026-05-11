@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#F2EEE2" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#071527" media="(prefers-color-scheme: dark)" />
+<meta name="description" content="A Brief Derivation of Spacetime. A public editorial companion to the II-LOGOS proof surface for the paper and formalization." />
+<title>A Brief Derivation of Spacetime — LOGOS</title>
+<meta property="og:title" content="A Brief Derivation of Spacetime — LOGOS" />
+<meta property="og:description" content="A public companion to the LLam-based spacetime derivation scaffold in II-LOGOS." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://github.com/rishistyping/ii-logos-spacetime-derivation/" />
+<meta property="og:image" content="https://op.ii.inc/madeby.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="A Brief Derivation of Spacetime — LOGOS" />
+<meta name="twitter:description" content="A public companion to the II-LOGOS spacetime derivation." />
+<meta name="twitter:image" content="https://op.ii.inc/madeby.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=Geist:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=Geist:wght@400;500;600&display=swap"></noscript>
+
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"></noscript>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+<style>
+:root{
+  --primary:#0F233F;
+  --primary-hover:#12335A;
+  --secondary:#516071;
+  --accent:#2F95A6;
+  --gold:#C9A96E;
+  --slate:#546070;
+  --neutral:#F2EEE2;
+  --surface:#F2EEE2;
+  --surface-elevated:#E8EDE5;
+  --on-surface:#212121;
+  --border:#5D6572;
+  --rule:rgba(15,35,63,.13);
+  --deep-surface:#0F233F;
+  --deep-ink:#F2EEE2;
+  --deep-muted:rgba(242,238,226,.75);
+  --deep-rule:rgba(242,238,226,.18);
+  --focus-ring:rgba(47,149,166,.34);
+  --code-surface:#FBF8EE;
+  --danger:#a4453a;
+  --chat-drawer-width:clamp(360px, 36vw, 520px);
+  --shell-max:1600px;
+  --gutter:54px;
+  --serif-caslon:"Libre Caslon Text", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --serif-body:"Source Serif 4", ui-serif, Georgia, serif;
+  --sans:"Geist", ui-sans-serif, system-ui, sans-serif;
+  --r-sm:8px;
+  --r-md:12px;
+  --r-lg:20px;
+  --dur-quick:180ms;
+  --dur-base:270ms;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --chat-open-delay: 0ms;
+  --chat-msg-fg:#141414;
+  --chat-user-fg:#F3F9FF;
+  --chat-user-bg:#0F233F;
+  --chat-assistant-bg:#F5F7FA;
+}
+
+html[data-theme="dark"]{
+  --primary:#F2EEE2;
+  --primary-hover:#FFFFFF;
+  --secondary:#AEB8C7;
+  --accent:#74C9D3;
+  --gold:#D8B875;
+  --slate:#A0ADBE;
+  --neutral:#071527;
+  --surface:#071527;
+  --surface-elevated:#0D2138;
+  --on-surface:#F6F0E6;
+  --border:#7C8BA0;
+  --rule:rgba(242,238,226,.14);
+  --deep-surface:#071527;
+  --deep-ink:#F2EEE2;
+  --deep-muted:rgba(242,238,226,.78);
+  --deep-rule:rgba(242,238,226,.20);
+  --focus-ring:rgba(116,201,211,.45);
+  --code-surface:#0A182A;
+  --danger:#F09A8B;
+}
+
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+html{ color-scheme: light; }
+html[data-theme="dark"]{ color-scheme: dark; }
+body{
+  margin:0;
+  font-family:var(--serif-body);
+  line-height:1.6;
+  color:var(--on-surface);
+  background:var(--surface);
+  min-height:100vh;
+  font-weight:400;
+}
+
+img{ max-width:100%; height:auto; }
+.shell{
+  width:min(var(--shell-max), calc(100% - var(--gutter)*2));
+  margin-inline:auto;
+}
+@media (max-width:760px){
+  .shell{ width:min(var(--shell-max), calc(100% - 32px)); }
+}
+a{ color:var(--primary); text-decoration: none; }
+a:hover{ color:var(--accent); }
+
+.skip-link{
+  position:fixed;
+  top:8px;
+  left:8px;
+  transform:translateY(-140px);
+  transition:transform var(--dur-base) var(--ease);
+  background:#fff;
+  color:#000;
+  z-index:1100;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+}
+.skip-link:focus{ transform:translateY(0); }
+
+header{
+  position:sticky;
+  top:0;
+  z-index:120;
+  background:linear-gradient(to bottom, var(--neutral), color-mix(in srgb, var(--neutral) 84%, transparent));
+  border-bottom:1px solid var(--rule);
+  backdrop-filter:saturate(1.1) blur(7px);
+}
+body.is-chat-open header{
+  display:none;
+}
+
+.site-head{
+  padding:16px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.brand{
+  font-family:var(--serif-caslon);
+  font-size:clamp(1.1rem, 2vw, 1.35rem);
+  letter-spacing:.015em;
+  color:var(--on-surface);
+  font-weight:700;
+}
+.top-nav{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.top-nav a{
+  color:var(--secondary);
+  font-size:.95rem;
+}
+
+main{ padding:36px 0 160px; }
+
+.hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:start;
+  gap:36px;
+  margin-top:36px;
+}
+.hero__media img{
+  width:100%;
+  border-radius:var(--r-lg);
+  border:1px solid var(--border);
+  box-shadow:0 22px 60px rgba(15,35,63,.10);
+}
+.kicker{
+  color:var(--slate);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-family:var(--sans);
+  font-size:.78rem;
+}
+.hero h1{
+  margin:.3rem 0 .35rem;
+  font-family:var(--serif-caslon);
+  font-size:clamp(2rem, 4vw, 3rem);
+  line-height:1.12;
+  color:var(--on-surface);
+  letter-spacing:.002em;
+}
+.hero p{ max-width:68ch; color:var(--secondary); }
+.hero__cta{
+  margin-top:24px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  padding:10px 16px;
+  font-family:var(--sans);
+  font-size:.92rem;
+  line-height:1;
+  cursor:pointer;
+  background:var(--surface-elevated);
+  color:var(--on-surface);
+}
+.btn--primary{
+  background:var(--primary);
+  color:var(--neutral);
+  border-color:transparent;
+}
+.btn--primary:hover{ background:var(--primary-hover); }
+
+.hero__chips{
+  margin-top:22px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.hero-chip{
+  background:var(--surface-elevated);
+  border:1px solid var(--border);
+  border-radius:999px;
+  font-size:.86rem;
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+section{ margin-top:56px; scroll-margin-top:92px; }
+section h2{
+  font-family:var(--serif-caslon);
+  font-size:clamp(1.55rem, 3vw, 2.2rem);
+  margin:0 0 16px;
+}
+section h3{
+  margin:.8rem 0 .35rem;
+  font-family:var(--serif-caslon);
+  font-size:1.3rem;
+}
+section p{ color:var(--secondary); max-width:78ch; }
+section code, section pre{
+  font-family:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+section pre{
+  background:var(--code-surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  padding:12px 14px;
+  overflow:auto;
+}
+
+.status-grid{
+  margin:20px 0 0;
+  display:grid;
+  gap:10px;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+}
+.status{
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  background:var(--surface-elevated);
+}
+.status .tag{
+  display:inline-flex;
+  font-size:.81rem;
+  border-radius:999px;
+  padding:4px 10px;
+  background:color-mix(in srgb, var(--primary) 16%, transparent);
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.tag-grid{
+  margin-top:18px;
+  display:grid;
+  gap:10px;
+}
+.tag{
+  border-radius:999px;
+  padding:7px 10px;
+  color:var(--on-surface);
+  display:inline-block;
+  font-family:var(--sans);
+  font-size:.82rem;
+  margin-right:6px;
+}
+.tag--lean{ background:#7ea27f; color:#112; }
+.tag--computed{ background:#9b8a6b; color:#18120a; }
+.tag--imported{ background:#4e6680; color:#eef6ff; }
+.tag--interpretation{ background:#9a6f70; color:#fff4f0; }
+
+.image-strip{
+  margin:22px 0 0;
+  display:grid;
+  gap:16px;
+}
+.image-strip img{
+  width:100%;
+  border-radius:var(--r-lg);
+  border:1px solid var(--border);
+  background:var(--surface-elevated);
+}
+
+.steps{
+  display:grid;
+  gap:16px;
+}
+.step{
+  padding:16px;
+  border-radius:var(--r-md);
+  border:1px solid var(--border);
+  background:var(--surface-elevated);
+}
+.step strong{ display:block; margin-bottom:6px; }
+
+.footer{
+  border-top:1px solid var(--rule);
+  margin-top:54px;
+  padding:24px 0 64px;
+  color:var(--secondary);
+  font-family:var(--sans);
+  font-size:.9rem;
+}
+
+@media (max-width:980px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+  .hero__media{
+    order:-1;
+  }
+}
+
+.chat-fab{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:900;
+  width:60px;
+  height:60px;
+  border-radius:999px;
+  border:1px solid transparent;
+  background:var(--primary);
+  color:var(--neutral);
+  font-family:var(--sans);
+  font-size:1.5rem;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 14px 38px rgba(0,0,0,.24);
+}
+.chat-fab:hover{ transform:translateY(-1px); }
+
+.chat-drawer{
+  position:fixed;
+  inset:0 0 0 auto;
+  width:min(var(--chat-drawer-width), 92vw);
+  background:var(--deep-surface);
+  color:var(--deep-ink);
+  border-left:1px solid color-mix(in srgb, var(--deep-rule) 70%, transparent);
+  transform:translateX(102%);
+  opacity:0;
+  transition:transform var(--dur-base) var(--ease), opacity var(--dur-base) var(--ease);
+  z-index:901;
+  display:flex;
+  flex-direction:column;
+}
+.chat-drawer.is-open{ transform:translateX(0); opacity:1; }
+.chat-drawer__head{
+  padding:12px 14px;
+  border-bottom:1px solid var(--deep-rule);
+  display:grid;
+  gap:4px;
+}
+.chat-drawer__title{
+  margin:0;
+  font-family:var(--serif-caslon);
+  font-size:1.05rem;
+}
+.chat-drawer__sub{
+  margin:0;
+  color:var(--deep-muted);
+  font-size:.86rem;
+}
+.chat-drawer__close{
+  position:absolute;
+  right:10px;
+  top:12px;
+  border:1px solid color-mix(in srgb, var(--deep-rule) 70%, transparent);
+  color:var(--deep-muted);
+  background:transparent;
+  border-radius:12px;
+  width:34px;
+  height:34px;
+  font-size:1rem;
+  cursor:pointer;
+}
+.chat-drawer__body{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  min-height:0;
+}
+.chat-drawer__messages{
+  list-style:none;
+  margin:0;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  overflow:auto;
+  min-height:0;
+  flex:1;
+}
+.chat-msg{
+  border-radius:10px;
+  padding:12px 13px;
+  max-width:92%;
+  border:1px solid color-mix(in srgb, var(--deep-rule) 70%, transparent);
+  white-space:normal;
+}
+.chat-msg--user{
+  margin-left:auto;
+  background:var(--chat-user-bg);
+  color:var(--chat-user-fg);
+}
+.chat-msg--assistant{
+  background:var(--chat-assistant-bg);
+  color:var(--chat-msg-fg);
+}
+.chat-msg p{ margin:.25em 0; }
+.chat-msg pre{
+  background:#fff;
+  border-radius:8px;
+  padding:8px 10px;
+  overflow:auto;
+}
+.chat-msg--pending{
+  opacity:.8;
+  filter:grayscale(.1);
+  font-style:italic;
+}
+.chat-msg--generating{
+  animation:chat-pop .8s var(--ease) both;
+}
+
+@keyframes chat-pop{
+  from{ opacity:0; transform:translateY(8px); filter:blur(1.4px); }
+  to{ opacity:1; transform:translateY(0); filter:blur(0); }
+}
+
+.chat-msg--review{
+  border-left:3px solid var(--gold);
+}
+.chat-drawer__foot{
+  border-top:1px solid var(--deep-rule);
+  padding:10px;
+}
+#chat-form{
+  display:grid;
+  gap:9px;
+}
+#chat-input{
+  width:100%;
+  border:1px solid var(--deep-rule);
+  border-radius:12px;
+  background:color-mix(in srgb, #FFF 8%, transparent);
+  color:var(--deep-ink);
+  font-family:var(--sans);
+  font-size:.94rem;
+  line-height:1.4;
+  min-height:84px;
+  max-height:140px;
+  resize:none;
+  padding:10px 12px;
+}
+#chat-send{
+  width:100%;
+  justify-content:center;
+  padding:10px;
+  border-radius:12px;
+  background:var(--accent);
+  color:#fff;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+#chat-send:disabled{
+  opacity:.46;
+  cursor:not-allowed;
+}
+#chat-status{
+  color:var(--deep-muted);
+  font-size:.82rem;
+  display:grid;
+  gap:6px;
+}
+#chat-progress-wrap{
+  height:8px;
+  background:rgba(255,255,255,.15);
+  border-radius:999px;
+  overflow:hidden;
+}
+#chat-progress-bar{
+  height:100%;
+  width:0%;
+  background:var(--accent);
+}
+#chat-controls{
+  margin-top:8px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+#chat-controls button{
+  font-size:.82rem;
+  border:1px solid var(--deep-rule);
+  background:rgba(242,238,226,.08);
+  color:var(--deep-ink);
+  border-radius:999px;
+  padding:6px 10px;
+  font-family:var(--sans);
+  cursor:pointer;
+}
+
+@media (max-width:560px){
+  .chat-drawer{
+    width:100vw;
+    border-left:none;
+  }
+}
+
+.focus-visible:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+@media (hover: hover) and (pointer: fine){
+  .btn:hover,
+  .hero-chip:hover,
+  .chat-fab:hover,
+  #chat-send:hover,
+  #chat-controls button:hover,
+  .chat-drawer__close:hover{
+    transform:translateY(-1px);
+  }
+  .btn:active,
+  .hero-chip:active,
+  .chat-fab:active,
+  #chat-send:active:not(:disabled),
+  #chat-controls button:active,
+  .chat-drawer__close:active{
+    transform:scale(.97);
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#start">Skip to content</a>
+
+<header>
+  <div class="shell site-head">
+    <a class="brand" href="#start">A Brief Derivation of Spacetime</a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="#why">Why this matters</a>
+      <a href="#story">Six-step story</a>
+      <a href="#claims">Claim boundary</a>
+      <a href="#visuals">Visuals</a>
+      <a href="#validate">Validate</a>
+      <a href="docs/public-reader-preview.md" target="_blank" rel="noopener">Reader preview</a>
+      <a href="docs/claim-status.md" target="_blank" rel="noopener">Claims</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell" id="start">
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <p class="kicker">II-LOGOS / Public companion</p>
+      <h1 id="hero-title">From spatial sign to temporal direction</h1>
+      <p>How the paper <strong>A Brief Derivation of Spacetime</strong> turns a minimal spatial
+      algebra into a spacetime story — and where the repository draws the formal boundary
+      between proved algebra and interpretation.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="paper/260504%20A%20Brief%20Derivation%20of%20Spacetime.pdf" target="_blank" rel="noopener">Read the paper<span class="arrow">→</span></a>
+        <a class="btn" href="docs/public-reader-preview.md" target="_blank" rel="noopener">Start here in 5 minutes<span class="arrow">→</span></a>
+        <button class="btn" id="chat-open-btn" type="button">Ask the paper<span class="arrow">→</span></button>
+      </div>
+      <div class="hero__chips" id="hero-prompts" aria-label="Ask the paper a starter question">
+        <button class="hero-chip" type="button" data-chat-prompt="Give me the six-step story in two minutes.">Six-step story</button>
+        <button class="hero-chip" type="button" data-chat-prompt="What is already Lean-proved versus interpretation in this project?">Proof boundary</button>
+        <button class="hero-chip" type="button" data-chat-prompt="What does the matrix A(λ) equal and what does it prove?">Time matrix</button>
+        <button class="hero-chip" type="button" data-chat-prompt="What are the key physical claims still marked Interpretation?">Physical interpretation</button>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="docs/assets/logos-spacetime-hero.png" alt="Spacetime derivation LOGOS visual">
+    </div>
+  </section>
+
+  <section id="why" aria-labelledby="why-title">
+    <h2 id="why-title">Why this matters</h2>
+    <p>The project asks a single sharp question: can a paper-grade geometric story
+    be separated into the part we can prove with Lean and the part we still keep as
+    interpretation? The paper argues that time direction and expansion behavior are
+    connected to algebraic structure from a curved spatial starting point and a
+    signature change.</p>
+
+    <div class="status-grid">
+      <article class="status">
+        <span class="tag">What is proved now</span>
+        <p>A Lean-proved algebraic spine gives exact matrix identities, branch signatures,
+        and eigendirections.</p>
+      </article>
+      <article class="status">
+        <span class="tag">What is pending</span>
+        <p>Physical readings such as horizon interpretation, redshift, and the shared-sign
+        thesis are kept explicit as interpretation unless added as theorem packets later.</p>
+      </article>
+      <article class="status">
+        <span class="tag">What this companion is</span>
+        <p>An editorial/interactive surface with no new proof authority: just this web page,
+        verified artifacts, and links to repository truths.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="story" aria-labelledby="story-title">
+    <h2 id="story-title">Six-step story</h2>
+    <div class="steps">
+      <article class="step"><strong>1. Positive metric starts the story</strong> Space is built from a dot product where distances are sums of squares and no direction is preferred.</article>
+      <article class="step"><strong>2. Curvature comes from translation non-commutativity</strong> The relation <code>[P_a, P_b] = λ J_ab</code> classifies maximally symmetric branches by the sign of <code>λ</code>.</article>
+      <article class="step"><strong>3. Finiteness selects the positive branch</strong> The sphere branch is compact and finite under the natural invariant measure, giving the spatial finite starting point.</article>
+      <article class="step"><strong>4. Wick/ signature change gives de Sitter form</strong> A fixed spatial algebra maps into a spacetime-signature algebra with the same curvature sign parameter and <code>Λ = 3λ</code> in four dimensions.</article>
+      <article class="step"><strong>5. Time evolution is a 2×2 matrix</strong> On each <code>(K_i, P_i)</code> plane, <code>A(λ) = [[0,-λ],[-1,0]]</code> gives exact determinant/trace/charpoly/eigenstructure in Lean.</article>
+      <article class="step"><strong>6. Sign language versus interpretation boundary</strong> The eigenspaces and split quadratic form are algebraically certified; light-cone, horizon, and arrow-of-time conclusions remain interpretation.</article>
+    </div>
+  </section>
+
+  <section id="claims" aria-labelledby="claims-title">
+    <h2 id="claims-title">Claim boundary map</h2>
+    <div class="tag-grid">
+      <div><span class="tag tag--lean">Lean-proved</span> Matrix spine, branch markers, eigendirections, split quadratic form, and four-dimensional <code>Λ=3λ</code> bridge.</div>
+      <div><span class="tag tag--computed">Computed here</span> Symbolic flow, branch plots, null-bridge and invariant-form summaries under <code>results/</code>.</div>
+      <div><span class="tag tag--imported">Imported theorem</span> Selected external mathematical background (e.g., compactness/simplicity context) not re-proved here.</div>
+      <div><span class="tag tag--interpretation">Interpretation</span> Physical narrative for light-cone geometry, horizon/orientation, redshift, and shared-sign thesis.</div>
+    </div>
+    <p style="margin-top:14px;">Exact current status is synchronized in <a href="docs/claim-status.md" target="_blank" rel="noopener">docs/claim-status.md</a>.</p>
+  </section>
+
+  <section id="visuals" aria-labelledby="visuals-title">
+    <h2 id="visuals-title">Visual artifact gallery</h2>
+    <p>All visuals are editorial-facing companions, not proof objects.</p>
+    <div class="image-strip">
+      <figure>
+        <img src="docs/assets/verification-story.png" alt="Verification story map for the project">
+      </figure>
+      <figure>
+        <img src="docs/assets/bridge-decomposition-funnel.png" alt="Bridge decomposition funnel for proof boundary">
+      </figure>
+      <figure>
+        <img src="viz/hyperbolic_flow.png" alt="Hyperbolic flow picture">
+      </figure>
+    </div>
+  </section>
+
+  <section id="validate" aria-labelledby="validate-title">
+    <h2 id="validate-title">Validate and explore</h2>
+    <p>Public reading path: <a href="docs/public-reader-preview.md" target="_blank" rel="noopener">public-reader-preview.md</a> → <a href="docs/claim-status.md" target="_blank" rel="noopener">claim-status.md</a> → <a href="scripts/check_all.sh" target="_blank" rel="noopener">scripts/check_all.sh</a>.</p>
+    <p>For implementers, the repository map is:
+      <code>paper/</code>, <code>Spacetime/</code>, <code>sympy/</code>, <code>results/</code>,
+      <code>viz/</code>, <code>docs/</code>, <code>spec/</code>.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Intelligent Internet. Dual surface: Apache-2.0 code and CC-BY-4.0 paper/docs/figures.
+    </p>
+  </footer>
+</main>
+
+<button id="chat-fab" class="chat-fab" type="button" aria-label="Open chat with the paper" aria-expanded="false">💬</button>
+
+<aside class="chat-drawer" id="chat-drawer" aria-hidden="true" aria-label="Chat with the paper">
+  <div class="chat-drawer__body">
+    <div class="chat-drawer__head">
+      <h3 class="chat-drawer__title">Chat with the paper</h3>
+      <p class="chat-drawer__sub">Cloud-first + local fallback. Focused Q&A by default; full review mode available on request.</p>
+      <button id="chat-drawer-close" class="chat-drawer__close" aria-label="Close chat" type="button">×</button>
+    </div>
+    <ul id="chat-messages" class="chat-drawer__messages" aria-live="polite"></ul>
+    <div class="chat-drawer__foot">
+      <form id="chat-form" autocomplete="off">
+        <textarea id="chat-input" placeholder="Ask about the paper, claims, or proof boundaries..." rows="2"></textarea>
+        <button id="chat-send" type="submit" class="btn" disabled>Send</button>
+        <div id="chat-status" hidden>
+          <div id="chat-status-text"></div>
+          <div id="chat-progress-wrap">
+            <div id="chat-progress-bar"></div>
+          </div>
+        </div>
+      </form>
+      <div id="chat-controls">
+        <button id="chat-review-btn" type="button">Run focused review</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script>
+// ----- Theme -----
+(function(){
+  const root = document.documentElement;
+  const KEY = 'ii-theme';
+  const saved = (() => {
+    try { return localStorage.getItem(KEY); } catch(_) { return null; }
+  })();
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved === 'dark' || saved === 'light' ? saved : (prefersDark ? 'dark' : 'light');
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+})();
+</script>
+
+<script type="module">
+const fab    = document.getElementById('chat-fab');
+const drawer = document.getElementById('chat-drawer');
+const closeBtn = document.getElementById('chat-drawer-close');
+const form   = document.getElementById('chat-form');
+const input  = document.getElementById('chat-input');
+const send   = document.getElementById('chat-send');
+const list   = document.getElementById('chat-messages');
+const status = document.getElementById('chat-status');
+const sText  = document.getElementById('chat-status-text');
+const sBar   = document.getElementById('chat-progress-bar');
+const chatOpenBtn = document.getElementById('chat-open-btn');
+const reviewBtn = document.getElementById('chat-review-btn');
+const heroPromptButtons = Array.from(document.querySelectorAll('.hero-chip'));
+
+const CHAT_API_URL = 'https://op-postulate-chat.rishresearch000.workers.dev/chat';
+const PAPER_TEXT_URL = 'paper/260504 A Brief Derivation of Spacetime.txt';
+const PAPER_PDF_URL = 'paper/260504 A Brief Derivation of Spacetime.pdf';
+const PAPER_NAME = 'A Brief Derivation of Spacetime';
+const CLOUD_MODEL = 'claude-sonnet-4-6';
+const MODEL_ID = 'Llama-3.2-1B-Instruct-q4f16_1-MLC';
+
+const MASTER_PROMPT = [
+  'We are going to do an exhaustive review of this paper.',
+  'First state the goal of this paper.',
+  'Then in detail describe its methodology.',
+  'Do you accept the methodology as a valid one.',
+  'If so, step by step go through the proof tree checking for accuracy and if it adheres to the methodology, rating out of 10.',
+  'If there are no math errors and it follows the methodology you cannot subtract points without good reason. State the specific reason.',
+  'Compare it to a normal physics paper grading.',
+  'You can make a note of any presentation issues and suggest precise fixes, but not dock points.',
+  'CRITICAL RULE: Before rating any step below 7, you must quote the exact sentence from the paper that contains the error. Copy it verbatim. If you cannot find the sentence, reread the surrounding paragraph and check whether the paper already addresses your objection. If the paper explicitly addresses it, you must explain why the paper’s response is insufficient rather than repeating an objection the paper has already answered.',
+  'CRITICAL RULE: Before concluding that a section’s argument fails, list every argument the paper makes in that section. Engage with each one individually. Do not dismiss a section based on one argument if the section contains multiple independent arguments.',
+  'CRITICAL RULE: If you claim the paper conflates X with Y, quote the sentence where the conflation occurs. If instead the paper explicitly distinguishes X from Y, you must acknowledge this and revise your assessment.',
+  'If there appears to be an issue double check against the paper and logic before moving on.',
+  'When completed do one final check.',
+  'Then review and do a rating on whether the paper succeeds in its stated goal according to the methodology.'
+].join('\n');
+
+let engine = null;
+let paperText = '';
+let busy = false;
+let bootPromise = null;
+let reviewSystemMessage = null;
+let qaSystemMessage = null;
+let paperContextPromise = null;
+
+function buildReviewSystemPrompt(text){
+  return [
+    'You are a rigorous physics paper reviewer. Your task is laid out below.',
+    'The full paper text follows these instructions; treat it as the authoritative source.',
+    '',
+    `Link to the Paper: ${PAPER_PDF_URL}`,
+    '',
+    MASTER_PROMPT,
+    '',
+    '===== PAPER =====',
+    text,
+    '===== END PAPER ====='
+  ].join('\n');
+}
+
+function buildQaSystemPrompt(text){
+  return [
+    `You are a precise Q&A assistant for the paper "${PAPER_NAME}".`,
+    'Answer the user’s specific question directly and concisely, using the paper below as the authoritative source.',
+    '',
+    `Link to the Paper: ${PAPER_PDF_URL}`,
+    '',
+    'Default to focused answers. Do not launch into exhaustive review, rating, proof-tree audit,',
+    'or full critique unless the user explicitly asks to begin, continue, rate, or review the paper.',
+    '',
+    'When citing the paper, quote short passages verbatim only when useful.',
+    'If the answer is not in the paper, say so clearly.',
+    '',
+    '===== PAPER =====',
+    text,
+    '===== END PAPER ====='
+  ].join('\n');
+}
+
+function escapeHtml(value){
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function protectMathSegments(markdown){
+  const segments = [];
+  const stash = token => {
+    const key = `@@CHAT_MATH_${segments.length}@@`;
+    segments.push(token);
+    return key;
+  };
+  let text = String(markdown || '');
+  text = text.replace(/\$\$[\s\S]+?\$\$/g, stash);
+  text = text.replace(/\\\[[\s\S]+?\\\]/g, stash);
+  text = text.replace(/\\\([\s\S]+?\\\)/g, stash);
+  text = text.replace(/\$[^$\n]+?\$/g, stash);
+  return { text, segments };
+}
+
+function fallbackMarkdown(markdown){
+  return String(markdown || '')
+    .split(/\n{2,}/)
+    .map(part => `<p>${escapeHtml(part).replace(/\n/g, '<br>')}</p>`)
+    .join('');
+}
+
+function renderMarkdown(markdown){
+  const protectedText = protectMathSegments(markdown);
+  const parsed = window.marked && window.DOMPurify
+    ? window.marked.parse(protectedText.text, { gfm: true, breaks: false })
+    : fallbackMarkdown(protectedText.text);
+  const clean = window.DOMPurify ? window.DOMPurify.sanitize(parsed) : parsed;
+  return clean.replace(/@@CHAT_MATH_(\d+)@@/g, (_, index) => {
+    return escapeHtml(protectedText.segments[Number(index)] || '');
+  });
+}
+
+function renderChatMessage(li){
+  const raw = li.dataset.rawContent || '';
+  li.innerHTML = renderMarkdown(raw);
+  li.querySelectorAll('a[href]').forEach(link => {
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+  if (window.renderMathInElement) window.renderMathInElement(li, window._katexOpts);
+}
+
+function appendMessage(role, content){
+  const li = document.createElement('li');
+  li.className = `chat-msg chat-msg--${role}`;
+  li.dataset.rawContent = content || '';
+  renderChatMessage(li);
+  list.appendChild(li);
+  list.scrollTop = list.scrollHeight;
+  return li;
+}
+
+async function fetchPaper(){
+  if (paperText) return paperText;
+  const r = await fetch(encodeURI(PAPER_TEXT_URL));
+  if (!r.ok) throw new Error('Could not load paper text (' + r.status + ')');
+  paperText = await r.text();
+  return paperText;
+}
+
+function cachePaperContext(text){
+  reviewSystemMessage = { role:'system', content: buildReviewSystemPrompt(text) };
+  qaSystemMessage = { role:'system', content: buildQaSystemPrompt(text) };
+  return { reviewSystemMessage, qaSystemMessage };
+}
+
+function preloadPaperContext(){
+  if (reviewSystemMessage && qaSystemMessage) return Promise.resolve({ reviewSystemMessage, qaSystemMessage });
+  if (paperContextPromise) return paperContextPromise;
+  paperContextPromise = fetchPaper()
+    .then(cachePaperContext)
+    .catch(err => {
+      paperContextPromise = null;
+      throw err;
+    });
+  return paperContextPromise;
+}
+
+async function ensureReviewSystemMessage(){
+  const context = await preloadPaperContext();
+  return context.reviewSystemMessage;
+}
+
+async function ensureQaSystemMessage(){
+  const context = await preloadPaperContext();
+  return context.qaSystemMessage;
+}
+
+function hasChatBackend(){
+  return Boolean(CHAT_API_URL) || Boolean(engine);
+}
+
+function syncSendState(){
+  send.disabled = busy || !input.value.trim() || !hasChatBackend();
+}
+
+/* Loads the local fallback model. Triggered only after cloud failure or when cloud is disabled. */
+function boot(){
+  if (bootPromise) return bootPromise;
+  bootPromise = (async () => {
+    if (!('gpu' in navigator)){
+      status.hidden = false;
+      sText.textContent = 'WebGPU is required for local fallback.';
+      throw new Error('WebGPU not available');
+    }
+    try {
+      status.hidden = false;
+      sText.textContent = 'Loading web-llm runtime…';
+      const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm@0.2.79');
+
+      sText.textContent = 'Preparing paper context…';
+      await preloadPaperContext();
+
+      sText.textContent = 'Preparing model — first run may download ~700MB.';
+      const progressEl = sBar.parentElement;
+      engine = await CreateMLCEngine(MODEL_ID, {
+        initProgressCallback: p => {
+          if (p && p.text) sText.textContent = p.text;
+          if (p && typeof p.progress === 'number'){
+            const pct = (p.progress * 100).toFixed(1);
+            sBar.style.width = pct + '%';
+            if (progressEl) progressEl.setAttribute('aria-valuenow', String(Math.round(p.progress * 100)));
+          }
+        }
+      });
+
+      status.hidden = true;
+      syncSendState();
+      return engine;
+    } catch (err) {
+      status.hidden = false;
+      sBar.style.width = '0%';
+      sText.textContent = 'Could not start local model: ' + (err && err.message ? err.message : err);
+      bootPromise = null;
+      throw err;
+    }
+  })();
+  return bootPromise;
+}
+
+function parseSse(response){
+  if (!response.body) return null;
+  return (async function* generator(){
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    while (true){
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true }).replace(/\r\n/g, '\n');
+      let nl;
+      while ((nl = buffer.indexOf('\n')) >= 0){
+        const line = buffer.slice(0, nl).trim();
+        buffer = buffer.slice(nl + 1);
+        if (!line.startsWith('data:')) continue;
+        const data = line.slice(5).trim();
+        if (data === '[DONE]') return;
+        try {
+          const obj = JSON.parse(data);
+          const delta = obj.choices?.[0]?.delta?.content;
+          if (delta) yield delta;
+        } catch(_) {}
+      }
+    }
+  })();
+}
+
+async function* chatViaApi(messages, opts = {}){
+  if (!CHAT_API_URL) throw new Error('cloud-disabled');
+  const r = await fetch(CHAT_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: CLOUD_MODEL,
+      messages,
+      temperature: opts.temperature ?? 0.4,
+      max_tokens: opts.max_tokens ?? 2048
+    })
+  });
+  if (!r.ok){
+    const detail = await r.text().catch(() => '');
+    throw new Error('cloud-' + r.status + (detail ? ': ' + detail.slice(0, 160) : ''));
+  }
+
+  const ctype = (r.headers.get('content-type') || '').toLowerCase();
+  if (ctype.includes('text/event-stream')){
+    yield* parseSse(r) || [];
+    return;
+  }
+
+  const data = await r.json();
+  const choice = data.raw?.choices?.[0] || data.choices?.[0] || {};
+  const msg = choice.message || {};
+  const text = data.response || data.content || data.message || msg.content || msg.reasoning || '';
+  if (!text) throw new Error('cloud-empty-response');
+  yield text;
+}
+
+async function* streamChat(messages, opts){
+  try {
+    yield* chatViaApi(messages, opts);
+    return;
+  } catch (err){
+    console.warn('[chat] cloud path failed, falling back:', err.message || err);
+    if (!CHAT_API_URL){
+      // explicit fallback path when the cloud endpoint is intentionally absent
+      await boot();
+    }
+    if (!engine) {
+      await boot();
+    }
+  }
+  if (!engine) throw new Error('No chat backend available');
+  const stream = await engine.chat.completions.create({ messages, stream: true, ...opts });
+  for await (const chunk of stream){
+    const delta = chunk.choices?.[0]?.delta?.content || '';
+    if (delta) yield delta;
+  }
+}
+
+function beginChatGenerateEffect(li){
+  if (!li.classList.contains('chat-msg--assistant')) return;
+  clearTimeout(li._chatGenTimer);
+  li.classList.remove('chat-msg--generating');
+  void li.offsetWidth;
+  li.classList.add('chat-msg--generating');
+}
+
+function endChatGenerateEffect(li){
+  clearTimeout(li._chatGenTimer);
+  li._chatGenTimer = setTimeout(() => {
+    li.classList.remove('chat-msg--generating');
+    li._chatGenTimer = null;
+  }, 700);
+}
+
+function cancelChatGenerateEffect(li){
+  clearTimeout(li._chatGenTimer);
+  li._chatGenTimer = null;
+  li.classList.remove('chat-msg--generating');
+}
+
+async function fillFromStream(out, gen){
+  let firstChunk = true;
+  let raw = '';
+  for await (const delta of gen){
+    if (firstChunk){
+      out.dataset.rawContent = '';
+      out.classList.remove('chat-msg--pending');
+      beginChatGenerateEffect(out);
+      firstChunk = false;
+    }
+    raw += delta;
+    out.dataset.rawContent = raw;
+    renderChatMessage(out);
+    list.scrollTop = list.scrollHeight;
+  }
+  if (!firstChunk){
+    endChatGenerateEffect(out);
+    return;
+  }
+  out.dataset.rawContent = '⚠ The model returned no content. Try again.';
+  renderChatMessage(out);
+  out.classList.remove('chat-msg--pending');
+  cancelChatGenerateEffect(out);
+}
+
+async function runReview(){
+  busy = true;
+  send.disabled = true;
+  const out = appendMessage('assistant', 'Thinking…');
+  out.classList.add('chat-msg--review', 'chat-msg--pending');
+  try {
+    const sys = await ensureReviewSystemMessage();
+    const messages = [sys, { role: 'user', content: 'Please begin the review now.' }];
+    await fillFromStream(out, streamChat(messages, { temperature: 0.3, max_tokens: 4096 }));
+  } catch (err) {
+    out.dataset.rawContent = '⚠ ' + (err && err.message ? err.message : err);
+    renderChatMessage(out);
+    out.classList.remove('chat-msg--pending');
+    cancelChatGenerateEffect(out);
+  } finally {
+    busy = false;
+    syncSendState();
+  }
+}
+
+async function ask(prompt){
+  if (busy) return;
+  busy = true;
+  send.disabled = true;
+  appendMessage('user', prompt);
+  const out = appendMessage('assistant', 'Thinking…');
+  out.classList.add('chat-msg--pending');
+  try {
+    const sys = await ensureQaSystemMessage();
+    const history = [...list.querySelectorAll('.chat-msg')]
+      .slice(0, -1)
+      .filter(el => !el.classList.contains('chat-msg--review'))
+      .map(el => ({
+        role: el.classList.contains('chat-msg--user') ? 'user' : 'assistant',
+        content: el.dataset.rawContent || el.textContent
+      }));
+    const messages = [sys, ...history, { role: 'user', content: prompt }];
+    await fillFromStream(out, streamChat(messages, { temperature: 0.4, max_tokens: 1536 }));
+  } catch (err) {
+    out.dataset.rawContent = '⚠ ' + (err && err.message ? err.message : err);
+    renderChatMessage(out);
+    out.classList.remove('chat-msg--pending');
+    cancelChatGenerateEffect(out);
+  } finally {
+    busy = false;
+    syncSendState();
+  }
+}
+
+let _chatScrollLocked = false;
+let _chatLockedScrollY = 0;
+function lockBodyScroll(){
+  if (_chatScrollLocked) return;
+  _chatLockedScrollY = window.scrollY;
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${_chatLockedScrollY}px`;
+  document.body.style.width = '100%';
+  _chatScrollLocked = true;
+}
+function unlockBodyScroll(){
+  if (!_chatScrollLocked) return;
+  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, _chatLockedScrollY);
+  _chatScrollLocked = false;
+}
+
+let _drawerLastFocus = null;
+function openDrawer(){
+  _drawerLastFocus = document.activeElement;
+  drawer.classList.add('is-open');
+  drawer.setAttribute('aria-hidden', 'false');
+  document.documentElement.classList.add('is-chat-open');
+  fab.setAttribute('aria-expanded', 'true');
+  if (window.matchMedia('(max-width:560px)').matches) lockBodyScroll();
+  setTimeout(() => {
+    try { input.focus({ preventScroll: true }); } catch(_) {}
+  }, 70);
+}
+
+function closeDrawer(){
+  drawer.classList.remove('is-open');
+  drawer.setAttribute('aria-hidden', 'true');
+  document.documentElement.classList.remove('is-chat-open');
+  fab.setAttribute('aria-expanded', 'false');
+  unlockBodyScroll();
+  if (_drawerLastFocus && _drawerLastFocus !== document.body){
+    try { fab.focus({ preventScroll: true }); } catch(_) {}
+  }
+  _drawerLastFocus = null;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Tab' || !drawer.classList.contains('is-open')) return;
+  const focusables = drawer.querySelectorAll('button, [href], input, textarea, [tabindex]:not([tabindex="-1"])');
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last  = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first){
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last){
+    e.preventDefault();
+    first.focus();
+  }
+});
+
+fab.addEventListener('click', () => {
+  if (drawer.classList.contains('is-open')) closeDrawer();
+  else openDrawer();
+});
+closeBtn.addEventListener('click', closeDrawer);
+if (chatOpenBtn){
+  chatOpenBtn.addEventListener('click', openDrawer);
+}
+reviewBtn.addEventListener('click', () => {
+  if (!drawer.classList.contains('is-open')) openDrawer();
+  runReview();
+});
+heroPromptButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const prompt = (btn.dataset.chatPrompt || '').trim();
+    if (!prompt) return;
+    openDrawer();
+    input.value = prompt;
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    syncSendState();
+    setTimeout(() => {
+      try { input.focus({ preventScroll: true }); } catch(_) {}
+    }, 110);
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+});
+
+input.addEventListener('input', () => {
+  syncSendState();
+  input.style.height = 'auto';
+  input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+});
+
+input.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' || e.shiftKey || e.isComposing) return;
+  e.preventDefault();
+  if (!busy && input.value.trim() && hasChatBackend()) form.requestSubmit();
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const value = input.value.trim();
+  if (!value || busy || !hasChatBackend()) return;
+  input.value = '';
+  input.style.height = 'auto';
+  ask(value);
+});
+
+status.hidden = true;
+// Preload the prompts and paper text without touching any model.
+const idle = window.requestIdleCallback || (cb => setTimeout(cb, 200));
+idle(() => {
+  preloadPaperContext().catch(() => {});
+});
+
+// Initialize send state from the backend configuration.
+syncSendState();
+</script>
+</body>
+</html>

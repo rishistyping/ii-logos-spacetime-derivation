@@ -1,6 +1,8 @@
 # Public Reader Preview
 
 This page is a lightweight public guide to *A Brief Derivation of Spacetime*.
+Start from the public companion at [`../index.html`](../index.html), then use this
+page as the reading walkthrough.
 It is meant to be readable before the Lean files, while preserving the same
 truth boundaries used by the repository.
 
